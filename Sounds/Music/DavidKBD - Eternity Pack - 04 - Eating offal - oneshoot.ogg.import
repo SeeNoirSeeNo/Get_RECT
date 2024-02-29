@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ca8oh4mypgibp"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 04 - Eating offal - oneshoot.ogg-f2b2791f4d2a4e533b6298ae1ae89843.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 04 - Eating offal - oneshoot.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 04 - Eating offal - oneshoot.ogg-f2b2791f4d2a4e533b6298ae1ae89843.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

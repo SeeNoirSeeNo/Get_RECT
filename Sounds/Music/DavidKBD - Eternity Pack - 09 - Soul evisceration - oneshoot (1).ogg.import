@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cu3k3c3f5mal0"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 09 - Soul evisceration - oneshoot (1).ogg-b1f0c8a6b6d994582ca536d202330b15.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 09 - Soul evisceration - oneshoot (1).ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 09 - Soul evisceration - oneshoot (1).ogg-b1f0c8a6b6d994582ca536d202330b15.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

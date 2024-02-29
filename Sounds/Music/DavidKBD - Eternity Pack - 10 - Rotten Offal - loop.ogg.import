@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rlxq7hyov1fm"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 10 - Rotten Offal - loop.ogg-9f19cd1b8257c516d8e51490f21475d9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 10 - Rotten Offal - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 10 - Rotten Offal - loop.ogg-9f19cd1b8257c516d8e51490f21475d9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

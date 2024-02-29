@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dv41ilbqsear7"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg-a9a69525bff18eb85fc32180806a1bd1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg-a9a69525bff18eb85fc32180806a1bd1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

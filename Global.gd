@@ -79,7 +79,14 @@ func stop_sound(sound):
 		if sound_controller.has_node(sound):
 			sound_controller.get_node(sound).stop()
 
-
+func play_music(name, volume = 0.0):
+	if sound_controller != null and music_turned_off == false:
+		if name in sound_controller.tracks:
+			if sound_controller.current_track:
+				sound_controller.current_track.stop()
+			sound_controller.current_track = sound_controller.tracks[name]
+			sound_controller.current_track.volume_db += volume
+			sound_controller.current_track.play()
 
 ###//UTILITY//###
 func pickRandomColor():

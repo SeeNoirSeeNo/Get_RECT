@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cpivotv44vso2"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 12 - At the Gates - loop.ogg-48aa108e6975fed12e2394f381a5d0fe.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 12 - At the Gates - loop.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 12 - At the Gates - loop.ogg-48aa108e6975fed12e2394f381a5d0fe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

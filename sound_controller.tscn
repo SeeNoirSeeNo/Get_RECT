@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dei3empqdqm4v"]
+[gd_scene load_steps=25 format=3 uid="uid://dei3empqdqm4v"]
 
 [ext_resource type="Script" path="res://sound_controller.gd" id="1_2cawy"]
 [ext_resource type="AudioStream" uid="uid://d218w6n23cvsp" path="res://Sounds/dying_1.wav" id="3_aihwy"]
@@ -14,6 +14,16 @@
 [ext_resource type="AudioStream" uid="uid://bkusxjng7ln1i" path="res://Sounds/Powerups/powerUp_1.wav" id="12_opsth"]
 [ext_resource type="AudioStream" uid="uid://hf574710dewk" path="res://Sounds/WaveShooter.mp3" id="13_k040n"]
 [ext_resource type="AudioStream" uid="uid://ntrple3tlir7" path="res://Sounds/Player/PlayerDied.wav" id="14_58yfi"]
+[ext_resource type="AudioStream" uid="uid://brnl5d7ull15b" path="res://Sounds/Music/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg" id="15_kdfvt"]
+[ext_resource type="AudioStream" uid="uid://c672pd782myd0" path="res://Sounds/Music/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - oneshoot.ogg" id="16_g0wcy"]
+[ext_resource type="AudioStream" uid="uid://cqwuprpgl4dit" path="res://Sounds/Music/DavidKBD - Eternity Pack - 02 - Agony Space-deep - loop.ogg" id="17_ujgtl"]
+[ext_resource type="AudioStream" uid="uid://bosm544lo21u2" path="res://Sounds/Music/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg" id="18_vt2y7"]
+[ext_resource type="AudioStream" uid="uid://d1vdx60h153iq" path="res://Sounds/Music/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg" id="19_2uf38"]
+[ext_resource type="AudioStream" uid="uid://dyf1kjn0rb05h" path="res://Sounds/Music/DavidKBD - Eternity Pack - 03 - I Can See You - oneshoot.ogg" id="20_blwtd"]
+[ext_resource type="AudioStream" uid="uid://bvtaduqqolxph" path="res://Sounds/Music/DavidKBD - Eternity Pack - 04 - Eating offal - loop.ogg" id="21_0veem"]
+[ext_resource type="AudioStream" uid="uid://ca8oh4mypgibp" path="res://Sounds/Music/DavidKBD - Eternity Pack - 04 - Eating offal - oneshoot.ogg" id="22_o2mxu"]
+[ext_resource type="AudioStream" uid="uid://ckeanegxtf41a" path="res://Sounds/Music/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="23_mfdv0"]
+[ext_resource type="AudioStream" uid="uid://b343pwyymjlp" path="res://Sounds/Music/DavidKBD - Eternity Pack - 05 - Evil soul inside - oneshoot.ogg" id="24_66ld4"]
 
 [node name="Sound_controller" type="Node2D"]
 script = ExtResource("1_2cawy")
@@ -62,9 +72,39 @@ volume_db = -15.0
 stream = ExtResource("12_opsth")
 volume_db = -10.467
 
-[node name="stage_music" type="AudioStreamPlayer" parent="."]
+[node name="player_died" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_58yfi")
+
+[node name="Track0" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_k040n")
 volume_db = -20.0
 
-[node name="player_died" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_58yfi")
+[node name="Track1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_kdfvt")
+
+[node name="Track2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_g0wcy")
+
+[node name="Track3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ujgtl")
+
+[node name="Track4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_vt2y7")
+
+[node name="Track5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_2uf38")
+
+[node name="Track6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_blwtd")
+
+[node name="Track7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_0veem")
+
+[node name="Track8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_o2mxu")
+
+[node name="Track9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_mfdv0")
+
+[node name="Track10" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_66ld4")

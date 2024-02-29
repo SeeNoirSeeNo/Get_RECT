@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bckedw8n31a7s"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 07 - Suffocation - oneshoot.ogg-c768422bc8b0db11a87e495b4b2475e1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Music/DavidKBD - Eternity Pack - 07 - Suffocation - oneshoot.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 07 - Suffocation - oneshoot.ogg-c768422bc8b0db11a87e495b4b2475e1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

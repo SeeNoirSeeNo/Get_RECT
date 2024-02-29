@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dt18qtn0ntca2"
-path="res://.godot/imported/8bit Idee.wav-9c488aba461d1f1c8945b204068887e3.sample"
+path="res://.godot/imported/8bit Idee.wav-9cb7c742b7393e440b1edbbd6607750c.sample"
 
 [deps]
 
-source_file="res://Sounds/8bit Idee.wav"
-dest_files=["res://.godot/imported/8bit Idee.wav-9c488aba461d1f1c8945b204068887e3.sample"]
+source_file="res://Sounds/Music/8bit Idee.wav"
+dest_files=["res://.godot/imported/8bit Idee.wav-9cb7c742b7393e440b1edbbd6607750c.sample"]
 
 [params]
 

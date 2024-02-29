@@ -1,6 +1,6 @@
 extends Sprite2D
 ### MOVEMENT ###
-@export var offset_chance : float = 0.41  # Chance to use offset, between 0 and 1
+@export var offset_chance : float = 0.31  # Chance to use offset, between 0 and 1
 @export var offset_range : int = 50
 @export var offset_min_time : float = 0.01  # Minimum time to update target position
 @export var offset_max_time : float = 2.00  # Maximum time to update target position

@@ -1,6 +1,20 @@
 extends Node2D
 
-@onready var stage_music = $stage_music
+@onready var tracks = {
+	"Track0": $Track0,
+	"Track1": $Track1,
+	"Track2": $Track2,
+	"Track3": $Track3,
+	"Track4": $Track4,
+	"Track5": $Track5,
+	"Track6": $Track6,
+	"Track7": $Track7,
+	"Track8": $Track8,
+	"Track9": $Track9,
+	"Track10": $Track10
+}
+
+var current_track = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +26,7 @@ func _exit_tree():
 	Global.score_updated.disconnect(self._on_score_updated)
 
 func _on_score_updated():
-	var new_speed = 1.0 + Global.score / 5000000.0  # Adjust this formula as needed
-	stage_music.pitch_scale = new_speed
-	print(stage_music.pitch_scale)
+	if current_track != null:
+		var new_speed = 1.0 + Global.score / 500000.0  # Adjust this formula as needed
+		current_track.pitch_scale = new_speed
+		print(current_track)
