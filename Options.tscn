@@ -1,0 +1,167 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7jg7kf3f7yf"]
+
+[ext_resource type="Script" path="res://Options.gd" id="1_dxcq8"]
+[ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="2_vio2g"]
+
+[node name="Options" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxcq8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Menu_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Woohoo!!!
+You found a secret message!
+There is no reward.
+Sorry :("
+mouse_filter = 0
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="Menu_Separator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu_Separator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="On" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "On"
+
+[node name="Off" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Off"
+
+[node name="Menu_Separator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music_label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CHAOS MODE"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Menu_Separator4" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="difficultyLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+text = "Difficulty"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0.439216, 1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/center_grabber = 1
+max_value = 9.0
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="difficultyLabelSTR" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Adjusts the rate at which the next enemy appears relative to the previous one:
+
+Novice: Maintain a constant spawn rate.
+Gentle: Increase by 1%.
+Casual: Increase by 2%.
+Standard: Increase by 3%.
+Moderate: Increase by 4%.
+Challenging: Increase by 5%.
+Advanced: Increase by 6%.
+Expert: Increase by 7%.
+Masterful: Increase by 8%.
+Insane: Increase by 9%"
+mouse_filter = 0
+text = "Very easy"
+
+[node name="Menu_Separator5" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu_Separator6" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="screenShakeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+text = "ScreenShake Intensity"
+
+[node name="screenShakeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0.439216, 1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/center_grabber = 1
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="screenShakeSTR" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Adjusts the rate at which the next enemy appears relative to the previous one:
+
+Novice: Maintain a constant spawn rate.
+Gentle: Increase by 1%.
+Casual: Increase by 2%.
+Standard: Increase by 3%.
+Moderate: Increase by 4%.
+Challenging: Increase by 5%.
+Advanced: Increase by 6%.
+Expert: Increase by 7%.
+Masterful: Increase by 8%.
+Insane: Increase by 9%"
+mouse_filter = 0
+text = "100"
+
+[node name="Menu_Separator7" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu_Separator8" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Sound_controller" parent="." instance=ExtResource("2_vio2g")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/On" to="." method="_on_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Off" to="." method="_on_off_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/screenShakeSlider" to="." method="_on_screen_shake_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

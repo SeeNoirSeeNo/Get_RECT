@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgyi17j8w8pj2"]
+
+[ext_resource type="Texture2D" uid="uid://c271jnixx6hlb" path="res://triangle-png-42424.png" id="1_co1tm"]
+[ext_resource type="Script" path="res://useable_powerup.gd" id="2_5lw4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21o5t"]
+size = Vector2(500, 785.714)
+
+[sub_resource type="Animation" id="Animation_or5ni"]
+resource_name = "Appear"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.028, 0.028), Vector2(0.048, 0.048), Vector2(0.028, 0.028)]
+}
+
+[sub_resource type="Animation" id="Animation_s68m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xf1k"]
+_data = {
+"Appear": SubResource("Animation_or5ni"),
+"RESET": SubResource("Animation_s68m8")
+}
+
+[node name="useable_powerup_wrap" type="Sprite2D"]
+modulate = Color(0.156863, 0.823529, 0, 1)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_co1tm")
+script = ExtResource("2_5lw4s")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(6.38621e-06, 35.7142)
+shape = SubResource("RectangleShape2D_21o5t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Appear"
+libraries = {
+"": SubResource("AnimationLibrary_2xf1k")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

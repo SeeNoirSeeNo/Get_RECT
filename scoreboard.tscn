@@ -1,0 +1,393 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3d7kv8lwa7l"]
+
+[ext_resource type="Script" path="res://scoreboard.gd" id="1_fntat"]
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fntat")
+
+[node name="TopPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+offset_left = 160.0
+offset_right = 1120.0
+offset_bottom = 90.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SeenoSTR" type="Label" parent="TopPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SEENO"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="ColorsSTR" type="Label" parent="TopPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "COLORS"
+vertical_alignment = 1
+uppercase = true
+
+[node name="TopHBoxContainer" type="HBoxContainer" parent="TopPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TotalScoreSTR" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TotalScoreINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "58157159"
+vertical_alignment = 1
+
+[node name="=" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillBountySTR" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kill bounty:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="KillBountyINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "781"
+vertical_alignment = 1
+
+[node name="+" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+vertical_alignment = 1
+
+[node name="PixelsSTR" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Pixels:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PixelsINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "58157159"
+vertical_alignment = 1
+
+[node name="CoverageSTR" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coverage:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CoverageINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "57%"
+vertical_alignment = 1
+
+[node name="BottomPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -90.0
+offset_right = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HighSTR" type="Label" parent="BottomPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HIGH"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="ScoreSTR" type="Label" parent="BottomPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SCORE"
+vertical_alignment = 1
+uppercase = true
+
+[node name="TopHBoxContainer" type="HBoxContainer" parent="BottomPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HIGH_TotalScoreSTR" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HIGH_TotalScoreINT" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "58157159"
+vertical_alignment = 1
+
+[node name="=" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HIGH_KillBountySTR" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kill bounty:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HIGH_KillBountyINT" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "781"
+vertical_alignment = 1
+
+[node name="+" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+vertical_alignment = 1
+
+[node name="HIGH_PixelsSTR" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Pixels:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HIGH_PixelsINT" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "58157159"
+vertical_alignment = 1
+
+[node name="HIGH_CoverageSTR" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coverage:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HIGH_CoverageINT" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "57%"
+vertical_alignment = 1
+
+[node name="LeftPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="RightPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="EndPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+z_index = 5
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SeenoSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "YOUR"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="ColorsSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SCORE"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="END_TotalScoreSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Score"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="END_TotalScoreINT" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "34235980"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="END_KillbountySTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer3"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kill Bounty"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="END_KillbountyINT" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer3"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "781"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="END_PixelesSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer4"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Pixels"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="END_PixelesINT" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer4"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "34235980"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="END_CoverageSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer5"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Coverage"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="END_CoverageINT" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer5"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "57%"
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EndPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="EndPanel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"
+
+[node name="HSeparator" type="HSeparator" parent="EndPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="EndPanel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"

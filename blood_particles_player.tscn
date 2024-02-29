@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://4voy82vtd2hc"]
+
+[ext_resource type="PackedScene" uid="uid://bsx0jbyh54jcd" path="res://blood_particles.tscn" id="1_h87vt"]
+
+[node name="Blood_particles_player" instance=ExtResource("1_h87vt")]
+amount = 35
+direction = Vector2(1, 1)
+spread = 42.28
+initial_velocity_min = 31.12
+initial_velocity_max = 498.04
+color = Color(0, 0.533333, 0.152941, 1)

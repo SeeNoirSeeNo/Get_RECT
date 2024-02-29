@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://dei3empqdqm4v"]
+
+[ext_resource type="Script" path="res://sound_controller.gd" id="1_2cawy"]
+[ext_resource type="AudioStream" uid="uid://d218w6n23cvsp" path="res://Sounds/dying_1.wav" id="3_aihwy"]
+[ext_resource type="AudioStream" uid="uid://m2smmewegalw" path="res://Sounds/dying_2.wav" id="4_j6dvk"]
+[ext_resource type="AudioStream" uid="uid://dk0c70io7lrv0" path="res://Sounds/dying_3.wav" id="5_p8fv5"]
+[ext_resource type="AudioStream" uid="uid://darl0xugqfhni" path="res://Sounds/dying_4.wav" id="6_yfbw8"]
+[ext_resource type="AudioStream" uid="uid://sg6l66b712f1" path="res://Sounds/shoot_1.wav" id="7_s4thk"]
+[ext_resource type="AudioStream" uid="uid://upftijljmhoa" path="res://Sounds/shoot_2.wav" id="8_5bo3a"]
+[ext_resource type="AudioStream" uid="uid://cfdtaadgypa07" path="res://Sounds/shoot_3.wav" id="9_gyckm"]
+[ext_resource type="AudioStream" uid="uid://dssdlo3kjeepg" path="res://Sounds/Coin_3.wav" id="9_ttf24"]
+[ext_resource type="AudioStream" uid="uid://cnyycmthpbw8u" path="res://Sounds/impact_1.wav" id="11_nudno"]
+[ext_resource type="AudioStream" uid="uid://80jpd4hdis31" path="res://Sounds/impact_2.wav" id="11_ta5ul"]
+[ext_resource type="AudioStream" uid="uid://bkusxjng7ln1i" path="res://Sounds/Powerups/powerUp_1.wav" id="12_opsth"]
+[ext_resource type="AudioStream" uid="uid://hf574710dewk" path="res://Sounds/WaveShooter.mp3" id="13_k040n"]
+[ext_resource type="AudioStream" uid="uid://ntrple3tlir7" path="res://Sounds/Player/PlayerDied.wav" id="14_58yfi"]
+
+[node name="Sound_controller" type="Node2D"]
+script = ExtResource("1_2cawy")
+
+[node name="dying_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aihwy")
+volume_db = -15.0
+
+[node name="dying_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j6dvk")
+volume_db = -15.0
+
+[node name="dying_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_p8fv5")
+volume_db = -15.0
+
+[node name="dying_4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yfbw8")
+volume_db = -15.0
+
+[node name="shoot_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_s4thk")
+volume_db = -25.0
+
+[node name="shoot_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5bo3a")
+volume_db = -25.0
+
+[node name="shoot_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gyckm")
+volume_db = -25.0
+
+[node name="powerup_spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ttf24")
+volume_db = -12.475
+
+[node name="impact_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_nudno")
+volume_db = -15.0
+
+[node name="impact_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ta5ul")
+volume_db = -15.0
+
+[node name="powerUpPickup_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_opsth")
+volume_db = -10.467
+
+[node name="stage_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_k040n")
+volume_db = -20.0
+
+[node name="player_died" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_58yfi")

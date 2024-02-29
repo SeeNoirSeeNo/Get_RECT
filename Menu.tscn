@@ -1,0 +1,262 @@
+[gd_scene load_steps=10 format=3 uid="uid://iak4c7s0n4hw"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_ntvm1"]
+[ext_resource type="PackedScene" uid="uid://b3hw1ikaqtv6l" path="res://enemy_1.tscn" id="2_l5ccu"]
+[ext_resource type="PackedScene" uid="uid://bq4lfbpcv35sw" path="res://enemy_2.tscn" id="3_peh2v"]
+[ext_resource type="PackedScene" uid="uid://cmdanr0t7ih1u" path="res://enemy_3.tscn" id="4_du1nl"]
+[ext_resource type="PackedScene" uid="uid://burkbwdot6ak4" path="res://enemy_4.tscn" id="5_hg1yq"]
+[ext_resource type="PackedScene" uid="uid://ddjskc8y6bvxj" path="res://power_up_damage.tscn" id="6_wut8m"]
+[ext_resource type="PackedScene" uid="uid://5p68lf6qabf3" path="res://power_up_reload.tscn" id="7_tocfs"]
+[ext_resource type="PackedScene" uid="uid://c1jkcye11cx08" path="res://power_up_wrap.tscn" id="8_535u4"]
+[ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="9_425w1"]
+
+[node name="Menu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ntvm1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Menu_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Woohoo!!!
+You found a secret message!
+There is no reward.
+Sorry :("
+mouse_filter = 0
+text = "MENU"
+horizontal_alignment = 1
+
+[node name="Menu_Separator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu_Separator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play_container" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/Play_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "All Pixels are primed
+Ready to play!"
+text = "Play"
+icon_alignment = 1
+
+[node name="Options_container" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/Options_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Discover how limited your power truly is"
+text = "Options
+"
+icon_alignment = 1
+
+[node name="Quit_container" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2/Quit_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Quitting already?
+The pixels shed a tear, but they'll be here, waiting for your triumphant comeback"
+text = "Quit
+"
+icon_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ENEMIES"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Enemy_container" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+tooltip_text = "GREEN ENEMY
+HP = 1
+SCORE = +10
+SPEED = 125
+"
+
+[node name="Enemy_1" parent="MarginContainer/VBoxContainer/Enemy_container/Control" instance=ExtResource("2_l5ccu")]
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control2"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+tooltip_text = "YELLOW ENEMY
+HP = 2
+SCORE = +20
+SPEED = 100
+"
+
+[node name="Enemy_2" parent="MarginContainer/VBoxContainer/Enemy_container/Control2" instance=ExtResource("3_peh2v")]
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control3"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+tooltip_text = "BLUE ENEMY
+HP = 3
+SCORE = +30
+SPEED = 75
+"
+
+[node name="Enemy_3" parent="MarginContainer/VBoxContainer/Enemy_container/Control3" instance=ExtResource("4_du1nl")]
+
+[node name="Control4" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control4"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+tooltip_text = "RED ENEMY
+HP = 8
+SCORE = +80
+SPEED = 50
+"
+
+[node name="Enemy_4" parent="MarginContainer/VBoxContainer/Enemy_container/Control4" instance=ExtResource("5_hg1yq")]
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator6" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "POWERUPS"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Powerup_container" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
+layout_mode = 2
+tooltip_text = "PURPLE POWER
+Duration 5 Seconds
+1 Hit Anything"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Powerup_container/Control"]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 5.0
+rotation = 0.785398
+tooltip_text = "PURPLE POWER
+Duration 5 Seconds
+Damage +1000%"
+
+[node name="Power_up_damage" parent="MarginContainer/VBoxContainer/Powerup_container/Control" instance=ExtResource("6_wut8m")]
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Powerup_container/Control2"]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 5.0
+rotation = 0.785398
+tooltip_text = "TEAL POWER
+Duration 5 Seconds
+Shooting Speed +1000%"
+
+[node name="Power_up_reload" parent="MarginContainer/VBoxContainer/Powerup_container/Control2" instance=ExtResource("7_tocfs")]
+position = Vector2(-6.10352e-05, -3.05176e-05)
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Powerup_container/Control3"]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 5.0
+rotation = 0.785398
+tooltip_text = "GREEN POWER
+Duration 5 Seconds
+Bullet Accuracy +1000%"
+
+[node name="Power_up_wrap" parent="MarginContainer/VBoxContainer/Powerup_container/Control3" instance=ExtResource("8_535u4")]
+
+[node name="Sound_controller" parent="." instance=ExtResource("9_425w1")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play_container/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Options_container/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Quit_container/Quit" to="." method="_on_quit_pressed"]

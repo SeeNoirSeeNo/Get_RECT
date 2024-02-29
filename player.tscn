@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1uqv8wssumwg"]
+
+[ext_resource type="Texture2D" uid="uid://b4hhkipq6wabg" path="res://Square.png" id="1_qrjd3"]
+[ext_resource type="Script" path="res://player.gd" id="2_4rvfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ora4"]
+size = Vector2(16, 16)
+
+[node name="Player" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_qrjd3")
+script = ExtResource("2_4rvfx")
+
+[node name="Reload_speed" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_4ora4")
+
+[node name="Power_up_cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Reload_speed" to="." method="_on_reload_speed_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Power_up_cooldown" to="." method="_on_power_up_cooldown_timeout"]

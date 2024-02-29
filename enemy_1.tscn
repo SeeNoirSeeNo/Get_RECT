@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3hw1ikaqtv6l"]
+
+[ext_resource type="PackedScene" uid="uid://bscyfv0l0vw0e" path="res://enemy.tscn" id="1_ttm4q"]
+
+[node name="Enemy_1" instance=ExtResource("1_ttm4q")]
+modulate = Color(0, 0.839216, 0.00784314, 1)
+offset_range = 120
+speed = 125
+hp = 1
+knockback = 1000
+points = 100
+screen_shake = 20
+death_sound = "dying_1"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://lmqm1y04jx0t"]
+
+[ext_resource type="Script" path="res://hit_debris.gd" id="1_waakp"]
+
+[node name="Hit_debris" type="CPUParticles2D"]
+z_index = -10
+amount = 5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 131.25
+initial_velocity_max = 275.0
+angle_max = 117.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+script = ExtResource("1_waakp")
