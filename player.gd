@@ -19,7 +19,6 @@ var damage = 1
 var default_damage = 1
 var can_shoot = true
 var is_dead = false
-var sound_array = ["shoot_1", "shoot_2", "shoot_3"]
 var bullet_wrap = 0
 var default_wrap = bullet_wrap
 var bullet_color = Color(1, 1, 1, 1)
@@ -57,7 +56,6 @@ func _process(delta):
 		bullet_instance.damage = damage
 		if bullet_wrap == 1:
 			bullet_instance.bullet_wrap = 1
-		Global.play_sound(sound_array.pick_random())
 		bullet_instance.modulate = bullet_color
 		$Reload_speed.start()
 		can_shoot = false

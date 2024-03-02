@@ -7,6 +7,19 @@ var speed = 250
 var damage #Changed in Player Script
 var look_once = true
 var bullet_wrap = 0
+var bullet_sounds = ["shoot_4", "shoot_5", "shoot_6",]
+#var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3",]
+var heavy_bullet_sounds = ["shoot_4", "shoot_5", "shoot_6"]
+var type = "normal"
+
+func _init():
+	pass
+	if bullet_wrap == 1:
+		Global.play_sound(heavy_bullet_sounds.pick_random())
+		print("heavy")
+	else:
+		Global.play_sound(bullet_sounds.pick_random())
+		print("normal")
 
 
 func _process(delta):
