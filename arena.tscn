@@ -10,14 +10,14 @@
 [ext_resource type="Script" path="res://Highscore.gd" id="5_ew1np"]
 [ext_resource type="PackedScene" uid="uid://burkbwdot6ak4" path="res://enemy_4.tscn" id="5_fa1eb"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="5_riky4"]
-[ext_resource type="PackedScene" uid="uid://c1jkcye11cx08" path="res://power_up_wrap.tscn" id="8_5o750"]
 [ext_resource type="Script" path="res://objectSpawner.gd" id="11_4ecc0"]
-[ext_resource type="PackedScene" uid="uid://5p68lf6qabf3" path="res://power_up_reload.tscn" id="11_am8eh"]
-[ext_resource type="PackedScene" uid="uid://ddjskc8y6bvxj" path="res://power_up_damage.tscn" id="12_sqghl"]
 [ext_resource type="Script" path="res://sparkle.gd" id="12_vslwu"]
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="13_l134k"]
 [ext_resource type="Script" path="res://BloodScan.gd" id="16_oeknt"]
 [ext_resource type="PackedScene" uid="uid://cn3d7kv8lwa7l" path="res://scoreboard.tscn" id="17_e16v7"]
+[ext_resource type="PackedScene" uid="uid://v1f43hnd63ys" path="res://PowerUp_Wrap.tscn" id="18_tum7t"]
+[ext_resource type="PackedScene" uid="uid://dot51taso3orw" path="res://PowerUp_Damage.tscn" id="19_6pj5q"]
+[ext_resource type="PackedScene" uid="uid://b3meracix8wih" path="res://PowerUp_ShootingSpeed.tscn" id="20_f3e7x"]
 
 [sub_resource type="Environment" id="Environment_seaom"]
 background_mode = 3
@@ -157,7 +157,7 @@ layout_mode = 1
 position = Vector2(640, 360)
 script = ExtResource("11_4ecc0")
 enemies = Array[PackedScene]([ExtResource("2_5dgjm"), ExtResource("3_b05s4"), ExtResource("4_jvihm"), ExtResource("5_fa1eb")])
-power_ups = Array[PackedScene]([ExtResource("12_sqghl"), ExtResource("11_am8eh"), ExtResource("8_5o750")])
+power_ups = Array[PackedScene]([ExtResource("20_f3e7x"), ExtResource("19_6pj5q")])
 
 [node name="Area2D" type="Area2D" parent="objectSpawner"]
 
@@ -170,6 +170,15 @@ autostart = true
 [node name="Power_up_spawn_timer" type="Timer" parent="objectSpawner"]
 wait_time = 8.0
 autostart = true
+
+[node name="powerUp_Damage" parent="." instance=ExtResource("19_6pj5q")]
+position = Vector2(525, 414)
+
+[node name="powerUp_ShootingSpeed" parent="." instance=ExtResource("20_f3e7x")]
+position = Vector2(779, 394)
+
+[node name="powerUp_Wrap" parent="." instance=ExtResource("18_tum7t")]
+position = Vector2(586, 458)
 
 [connection signal="timeout" from="Camera2D/Screen_shake_time" to="Camera2D" method="_on_screen_shake_time_timeout"]
 [connection signal="timeout" from="BloodScan/BloodScanTimer" to="BloodScan" method="_on_blood_scan_timer_timeout"]

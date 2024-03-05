@@ -9,18 +9,19 @@ signal player_died
 @onready var camera = $"../Camera2D"
 @onready var bloodScan = $"../BloodScan"
 
+
+var active_powerup_colors = []
 var speed = 150
 var velocity = Vector2()
 var current_color = modulate
-var reload_speed = 0.1
-var default_reload_speed = reload_speed
+var attackSpeed = 100.0  # Attack once every 2 seconds
 var power_up_reset = []
 var damage = 1
 var default_damage = 1
 var can_shoot = true
 var is_dead = false
 var bullet_wrap = 0
-var default_wrap = bullet_wrap
+var bullet_wrap_decay = 0.5
 var bullet_color = Color(1, 1, 1, 1)
 var default_bullet_color = bullet_color
 var power_up_active = false
@@ -30,6 +31,7 @@ var invicible = false
 func _ready():
 	Global.player = self
 	self.global_position = get_viewport().size / 2
+	$Reload_speed.wait_time = get_attack_delay()
 
 
 func _exit_tree():
@@ -54,16 +56,40 @@ func _process(delta):
 	if Input.is_action_pressed("click") and Global.node_creation_parent != null and can_shoot and is_dead == false:
 		var bullet_instance = Global.instance_node(bullet,global_position,Global.node_creation_parent)
 		bullet_instance.damage = damage
-		if bullet_wrap == 1:
-			bullet_instance.bullet_wrap = 1
-		bullet_instance.modulate = bullet_color
+		bullet_instance.bullet_wrap_decay = bullet_wrap_decay
+		bullet_instance.bullet_wrap = bullet_wrap
+		bullet_instance.set_active_powerup_colors(active_powerup_colors.duplicate())
 		$Reload_speed.start()
 		can_shoot = false
 
 
+func add_active_powerup_color(color):
+	active_powerup_colors.append(color)
+
+func remove_active_powerup_color(color):
+	active_powerup_colors.erase(color)
+	
+
+func get_attack_delay():
+	return 200.0 / attackSpeed  # Delay in seconds
+
+func modify_attackSpeed(multiplier):
+	attackSpeed *= multiplier
+	$Reload_speed.stop()
+	$Reload_speed.wait_time = get_attack_delay()
+	$Reload_speed.start()
+
+func modify_damage(multiplier, color):
+	damage *= multiplier
+	bullet_color = color
+	
+func modify_wrap(modifier):
+	bullet_wrap += modifier
+
+
 func _on_reload_speed_timeout():
 	can_shoot = true
-	$Reload_speed.wait_time = reload_speed
+	$Reload_speed.wait_time = get_attack_delay()
 
 
 func _on_hitbox_area_entered(area):
@@ -81,20 +107,20 @@ func _on_hitbox_area_entered(area):
 
 
 
-func _on_power_up_cooldown_timeout():
-	if power_up_reset.find("Power_up_reload") != null:
-		reload_speed = default_reload_speed
-		power_up_reset.erase("Power_up_reload")
-		
-	if power_up_reset.find("Power_up_damage") != null:
-		damage = default_damage
-		
-		power_up_reset.erase("Power_up_damage")
-		
-	if power_up_reset.find("Power_up_wrap") != null:
-		bullet_wrap = default_wrap
-		power_up_reset.erase("Power_up_wrap")
-		
-	bullet_color = default_bullet_color
-	power_up_active = false
+#func _on_power_up_cooldown_timeout():
+#	if power_up_reset.find("Power_up_reload") != null:
+#		attackSpeed = default_attackSpeed
+#		power_up_reset.erase("Power_up_reload")
+#
+#	if power_up_reset.find("Power_up_damage") != null:
+#		damage = default_damage
+#
+#		power_up_reset.erase("Power_up_damage")
+#
+#	if power_up_reset.find("Power_up_wrap") != null:
+#		bullet_wrap = default_wrap
+#		power_up_reset.erase("Power_up_wrap")
+#
+#	bullet_color = default_bullet_color
+#	power_up_active = false
 
