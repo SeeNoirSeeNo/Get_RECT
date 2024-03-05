@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bq4lfbpcv35sw" path="res://enemy_2.tscn" id="3_peh2v"]
 [ext_resource type="PackedScene" uid="uid://cmdanr0t7ih1u" path="res://enemy_3.tscn" id="4_du1nl"]
 [ext_resource type="PackedScene" uid="uid://burkbwdot6ak4" path="res://enemy_4.tscn" id="5_hg1yq"]
-[ext_resource type="PackedScene" uid="uid://ddjskc8y6bvxj" path="res://power_up_damage.tscn" id="6_wut8m"]
-[ext_resource type="PackedScene" uid="uid://5p68lf6qabf3" path="res://power_up_reload.tscn" id="7_tocfs"]
-[ext_resource type="PackedScene" uid="uid://c1jkcye11cx08" path="res://power_up_wrap.tscn" id="8_535u4"]
+[ext_resource type="PackedScene" uid="uid://b3meracix8wih" path="res://PowerUp_ShootingSpeed.tscn" id="7_exgfq"]
+[ext_resource type="PackedScene" uid="uid://v1f43hnd63ys" path="res://PowerUp_Wrap.tscn" id="8_y3imv"]
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="9_425w1"]
+[ext_resource type="PackedScene" uid="uid://dot51taso3orw" path="res://PowerUp_Damage.tscn" id="10_sskve"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -218,11 +218,11 @@ offset_top = -11.0
 offset_right = 16.0
 offset_bottom = 5.0
 rotation = 0.785398
-tooltip_text = "PURPLE POWER
+tooltip_text = "Power-Up: DAMAGE
 Duration 5 Seconds
-Damage +1000%"
+Damage x10"
 
-[node name="Power_up_damage" parent="MarginContainer/VBoxContainer/Powerup_container/Control" instance=ExtResource("6_wut8m")]
+[node name="powerUp_Damage" parent="MarginContainer/VBoxContainer/Powerup_container/Control" instance=ExtResource("10_sskve")]
 
 [node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
 layout_mode = 2
@@ -233,12 +233,11 @@ offset_top = -11.0
 offset_right = 16.0
 offset_bottom = 5.0
 rotation = 0.785398
-tooltip_text = "TEAL POWER
+tooltip_text = "Power-Up: Shooting Speed
 Duration 5 Seconds
-Shooting Speed +1000%"
+Shooting Speed +200%"
 
-[node name="Power_up_reload" parent="MarginContainer/VBoxContainer/Powerup_container/Control2" instance=ExtResource("7_tocfs")]
-position = Vector2(-6.10352e-05, -3.05176e-05)
+[node name="powerUp_ShootingSpeed" parent="MarginContainer/VBoxContainer/Powerup_container/Control2" instance=ExtResource("7_exgfq")]
 
 [node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
 layout_mode = 2
@@ -249,11 +248,11 @@ offset_top = -11.0
 offset_right = 16.0
 offset_bottom = 5.0
 rotation = 0.785398
-tooltip_text = "GREEN POWER
+tooltip_text = "POWER UP WRAP
 Duration 5 Seconds
-Bullet Accuracy +1000%"
+Bullet Accuracy +25%"
 
-[node name="Power_up_wrap" parent="MarginContainer/VBoxContainer/Powerup_container/Control3" instance=ExtResource("8_535u4")]
+[node name="powerUp_Wrap" parent="MarginContainer/VBoxContainer/Powerup_container/Control3" instance=ExtResource("8_y3imv")]
 
 [node name="Sound_controller" parent="." instance=ExtResource("9_425w1")]
 

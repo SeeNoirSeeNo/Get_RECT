@@ -15,6 +15,9 @@ extends Sprite2D
 @export var drop_chance : int = 0
 
 @onready var current_color = modulate
+#this will be hard to type on mobile so sorry, but you can have a float representing a hue, and an array[color] of the enemy colors, and with a for loop add randf_range(0.05, 0.2) to that float, and set the h property to the float
+
+
 
 var impact_sound_array = ["impact_1", "impact_2"]
 var target_position = Vector2()  # The position the enemy is moving towards
