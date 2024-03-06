@@ -60,7 +60,7 @@ vertical_alignment = 1
 [node name="TotalScoreINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "58157159"
+text = "0"
 vertical_alignment = 1
 
 [node name="=" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
@@ -80,7 +80,7 @@ vertical_alignment = 1
 [node name="KillBountyINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "781"
+text = "0"
 vertical_alignment = 1
 
 [node name="+" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
@@ -99,7 +99,7 @@ vertical_alignment = 1
 [node name="PixelsINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "58157159"
+text = "0"
 vertical_alignment = 1
 
 [node name="CoverageSTR" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
@@ -112,7 +112,7 @@ vertical_alignment = 1
 [node name="CoverageINT" type="Label" parent="TopPanel/VBoxContainer/TopHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "57%"
+text = "0"
 vertical_alignment = 1
 
 [node name="BottomPanel" type="Panel" parent="."]
@@ -304,7 +304,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "34235980"
+text = "0"
 vertical_alignment = 1
 uppercase = true
 
@@ -324,7 +324,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "781"
+text = "0"
 vertical_alignment = 1
 uppercase = true
 
@@ -344,7 +344,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "34235980"
+text = "0"
 vertical_alignment = 1
 uppercase = true
 
@@ -364,7 +364,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "57%"
+text = "0"
 vertical_alignment = 1
 uppercase = true
 

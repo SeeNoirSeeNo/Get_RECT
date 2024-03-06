@@ -13,10 +13,8 @@ var damage #Changed in Player Script
 var look_once = true
 var bullet_wrap = 0
 var bullet_wrap_decay = 0
-var bullet_sounds = ["shoot_4", "shoot_5", "shoot_6",]
-#var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3",]
-var heavy_bullet_sounds = ["shoot_4", "shoot_5", "shoot_6"]
-var type = "normal"
+#var bullet_sounds = ["shoot_4", "shoot_5", "shoot_6",]
+var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3", "shoot_4", "shoot_5", "shoot_6"]
 
 func _ready():
 	var timer = Timer.new()
@@ -24,6 +22,7 @@ func _ready():
 	timer.autostart = true
 	timer.timeout.connect(self._on_timer_timeout)
 	add_child(timer)
+	Global.play_sound(bullet_sounds.pick_random())
 
 
 func set_active_powerup_colors(colors):

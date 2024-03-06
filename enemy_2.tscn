@@ -4,8 +4,6 @@
 
 [node name="Enemy_2" instance=ExtResource("1_ehy75")]
 modulate = Color(0.937255, 0.890196, 0, 1)
-min_time = null
-max_time = null
 offset_range = 90
 speed = 100
 hp = 2
