@@ -14,7 +14,7 @@ var active_powerup_colors = []
 var speed = 150
 var velocity = Vector2()
 var current_color = modulate
-var attackSpeed = 100.0  # Attack once every 2 seconds
+var attackSpeed = 800.0  # 200 = Attack once every 2 seconds
 var power_up_reset = []
 var damage = 1
 var default_damage = 1

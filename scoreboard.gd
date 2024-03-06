@@ -29,8 +29,6 @@ extends Control
 @onready var END_CoverageSTR = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageSTR
 @onready var END_CoverageINT = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageINT
 
-var is_counting_up = false
-
 func _ready():
 	#Connect Signals
 	player.player_died.connect(self._on_player_died)
@@ -39,14 +37,6 @@ func _ready():
 	Global.score_updated.connect(self._on_score_updated)
 	#Hide EndPanel
 	EndPanel.visible = false
-
-	
-	#Set Panels
-	var viewport = get_viewport_rect()
-	topPanel.custom_minimum_size.y = (viewport.size.y - bloodScan.area_size.y) / 2
-	bottomPanel.custom_minimum_size.y = (viewport.size.y - bloodScan.area_size.y) / 2
-	leftPanel.custom_minimum_size.x = (viewport.size.x - bloodScan.area_size.x) / 2
-	rightPanel.custom_minimum_size.x = (viewport.size.x - bloodScan.area_size.x) / 2
 
 	#Reset & Set Points
 	HIGH_totalScoreINT.text = str(Global.highscoreScore)
@@ -57,10 +47,6 @@ func _ready():
 	Global.pixels = 0
 	HIGH_coverageINT.text = str(Global.highscoreCoverage)
 	Global.coverage = 0
-
-
-func _process(_delta):
-	pass
 
 func gameOver():
 	#FINAL BLOOD SCAN
@@ -77,37 +63,53 @@ func gameOver():
 		Global.highscoreCoverage = Global.coverage
 	#SHOW & UPDATE EndPanel
 	EndPanel.visible = true
-	#END_totalScoreINT.text = totalScoreINT.text
-	END_killBountyINT.text = killBountyINT.text
-	END_PixelesINT.text = pixelsINT.text
-	END_CoverageINT.text = coverageINT.text
-	if not is_counting_up:
-		start_count_up(totalScoreINT.text.to_int(), END_totalScoreINT)
+	start_counting_sequences()
+
+func start_counting_sequences():
+	await start_count_up_and_down(totalScoreINT.text.to_int(), END_totalScoreINT, totalScoreINT)
+	totalScoreINT.text = str(0)
+	await start_count_up_and_down(killBountyINT.text.to_int(), END_killBountyINT, killBountyINT)
+	killBountyINT.text = str(0)
+	await start_count_up_and_down(pixelsINT.text.to_int(), END_PixelesINT, pixelsINT)
+	pixelsINT.text = str(0)
+	await start_count_up_and_down_percentage(coverageINT.text.to_float(), END_CoverageINT, coverageINT)
+	coverageINT.text = str(0)
 
 
-# Coroutine to count up the score
-func start_count_up(final_score, score_label):
-	is_counting_up = true
+# Coroutine to count up and down the score
+func start_count_up_and_down(final_score, score_label_up, score_label_down):
 	var current_score = 0.0
-	score_label.text = str(int(round(current_score)))  # Round to nearest integer
-	
+	score_label_up.text = str(int(round(current_score)))  # Round to nearest integer
+	score_label_down.text = str(final_score)  # Start at final score
+
 	while current_score < final_score:
 		# Calculate increment as a percentage of the remaining score
 		var increment = max(1, (final_score - current_score) * 0.1)
 		current_score += increment
-		score_label.text = str(int(round(current_score)))  # Round to nearest integer
+		score_label_up.text = str(int(round(current_score)))  # Round to nearest integer
+		score_label_down.text = str(final_score - int(round(current_score)))  # Subtract from final score
 		await(get_tree().create_timer(0.05).timeout)  # Wait for 0.05 seconds
-	is_counting_up = false
 
+# Coroutine to count up the percentage
+func start_count_up_and_down_percentage(final_score, score_label_up, score_label_down):
+	var current_score = 0.0
+	score_label_up.text = str(round(current_score * 100.0) / 100.0)  # Format as float with two decimal places
+	score_label_down.text = str(round(final_score * 100.0) / 100.0)  # Start at final score
 
-
+	while current_score < final_score:
+		# Calculate increment as a percentage of the remaining score
+		var increment = max(0.01, (final_score - current_score) * 0.1)
+		current_score += increment
+		score_label_up.text = str(round(current_score * 100.0) / 100.0)  # Format as float with two decimal places
+		score_label_down.text = str(round((final_score - current_score) * 100.0) / 100.0)  # Subtract from final score
+		await(get_tree().create_timer(0.05).timeout)  # Wait for 0.05 seconds
 
 func _on_score_updated():
 	#Update Text
 	totalScoreINT.text = str(Global.score)
 	killBountyINT.text = str(Global.killBounty)
 	pixelsINT.text = str(Global.pixels)
-	coverageINT.text = str(Global.coverage)
+	coverageINT.text = str(Global.coverage) + "%"
 	#Update Color
 	totalScoreINT.self_modulate = Global.pickRandomColor()
 	killBountyINT.self_modulate = Global.pickRandomColor()
