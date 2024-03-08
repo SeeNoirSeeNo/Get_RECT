@@ -13,8 +13,8 @@ spread = 69.86
 gravity = Vector2(0, 0)
 initial_velocity_min = 55.22
 initial_velocity_max = 411.01
-scale_amount_min = 0.08
-scale_amount_max = 0.1
+scale_amount_min = 0.01
+scale_amount_max = 0.01
 color = Color(0, 0.533333, 0.152941, 0.470588)
 script = ExtResource("2_evcgm")
 

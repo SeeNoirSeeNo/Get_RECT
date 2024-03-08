@@ -1,6 +1,7 @@
 extends Node
 
 signal score_updated
+signal stage_changed(new_stage)
 
 ###//ARENA//###
 var arena_offset_left = 645
@@ -18,6 +19,14 @@ var music_turned_off = false
 var difficulty_setting = 0
 var spawn_multiplicator = 1
 var chaosMode = false
+###//GAME//###
+var _current_stage = 0
+var current_stage:
+	get:
+		return _current_stage
+	set(value):
+		_current_stage = value
+		emit_signal("stage_changed", _current_stage)
 ###//SCORE//###
 var _score = 0
 var score:
