@@ -29,4 +29,3 @@ func _on_score_updated():
 	if current_track != null:
 		var new_speed = 1.0 + Global.score / 50000.0  # Adjust this formula as needed
 		current_track.pitch_scale = new_speed
-		print(current_track)

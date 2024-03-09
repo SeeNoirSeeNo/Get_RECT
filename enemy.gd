@@ -1,12 +1,11 @@
 extends Sprite2D
-
-
+#SIGNALS
+signal enemy_died
 #PRELOAD SCENES
 var blood_particles = preload("res://blood_particles.tscn")
 var debris = preload("res://hit_debris.tscn")
 #COLOR
 @onready var current_color = modulate
-
 #MOVEMENT-RELATED
 #OFFSET
 var offset_chance : float = 0.00  # Chance to use offset, between 0 and 1
@@ -21,7 +20,7 @@ var offset_max_time : float = 1.00  # Maximum time to update target position
 var speed : int = 50
 var velocity = Vector2()
 var hp : int = 1
-var points : int = 1
+var points : int = 0
 #VARIOUS STATS
 var stun = false
 var knockback : int = 1
@@ -38,6 +37,7 @@ var particle_amount : int = 0
 #METHODS
 func _ready():
 	initialize_offset()
+	add_to_group("enemies")
 	
 func _process(delta):
 	basic_movement_towards_player(delta)
@@ -67,6 +67,7 @@ func basic_movement_towards_player(delta):
 
 func set_attributes(attributes: EnemyAttributes):
 	hp = attributes.hp
+	points = attributes.points
 	offset_chance = attributes.offset_chance
 	offset_range = attributes.offset_range
 	offset_min_time = attributes.offset_min_time
@@ -93,6 +94,7 @@ func die():
 		blood_particles_instance.scale_amount_min = particle_scale_amount_min  # Set the particle size
 		blood_particles_instance.scale_amount_max = particle_scale_amount_max # Set the particle size
 		blood_particles_instance.amount = particle_amount  # Set the particle amount
+		emit_signal("enemy_died")
 	#Global.play_sound(death_sound)
 	queue_free()
 

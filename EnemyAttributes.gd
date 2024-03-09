@@ -4,6 +4,7 @@ class_name EnemyAttributes
 #Core
 var hp = 1
 var speed = 0
+var points = 0
 var modulate = Color()
 #Offset
 var offset_chance = 0.0

@@ -33,7 +33,7 @@ func _on_off_pressed():
 
 func _on_h_slider_value_changed(value):
 	Global.difficulty_setting = int(value)
-	difficultyLabelSTR.text = difficulty[value]
+	difficultyLabelSTR.text = difficulty[value-1]
 	difficultyLabelSTR.self_modulate = Global.pickRandomColor()
 
 
