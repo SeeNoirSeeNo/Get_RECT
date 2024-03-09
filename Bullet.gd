@@ -43,7 +43,6 @@ func _process(delta):
 
 	if global_position.x < (bloodScan.arenaEdgeLeft + Global.arena_offset_left) or global_position.x > (bloodScan.arenaEdgeRight + Global.arena_offset_right) or global_position.y < (bloodScan.arenaEdgeTop + Global.arena_offset_top) or global_position.y > (bloodScan.arenaEdgeBottom +  Global.arena_offset_bottom):
 		var old_position = position
-		print(bullet_wrap)
 		if bullet_wrap >= randf():
 			position.x = wrapf(position.x, bloodScan.arenaEdgeLeft + Global.arena_offset_left, bloodScan.arenaEdgeRight + Global.arena_offset_right)
 			position.y = wrapf(position.y, bloodScan.arenaEdgeTop + Global.arena_offset_top, bloodScan.arenaEdgeBottom + Global.arena_offset_bottom)

@@ -16,11 +16,11 @@ var camera = null
 ###//OPTIONS//###
 var screenShakeIntensity = 100
 var music_turned_off = false
-var difficulty_setting = 0
+var difficulty_setting = 1
 var spawn_multiplicator = 1
 var chaosMode = false
 ###//GAME//###
-var _current_stage = 0
+var _current_stage = 1
 var current_stage:
 	get:
 		return _current_stage
@@ -67,10 +67,6 @@ var highscoreKillBounty = 0
 var highscorePixels = 0
 var highscoreCoverage = 0
 
-
-func _process(_delta):
-	spawn_multiplicator = float(1 - (difficulty_setting/400.0))
-	
 func instance_node(node,location,parent):
 	var node_instance = node.instantiate()
 	parent.add_child(node_instance)

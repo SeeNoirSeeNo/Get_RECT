@@ -47,6 +47,26 @@ text = "COLORS"
 vertical_alignment = 1
 uppercase = true
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="TopPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StageSTR" type="Label" parent="TopPanel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stage"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="StageINT" type="Label" parent="TopPanel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+vertical_alignment = 1
+uppercase = true
+
 [node name="TopHBoxContainer" type="HBoxContainer" parent="TopPanel/VBoxContainer"]
 layout_mode = 2
 
@@ -285,6 +305,26 @@ text = "SCORE"
 vertical_alignment = 1
 uppercase = true
 
+[node name="HBoxContainer6" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StageSTR" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer6"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stage"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="StageINT" type="Label" parent="EndPanel/VBoxContainer/HBoxContainer6"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+vertical_alignment = 1
+uppercase = true
+
 [node name="HSeparator" type="HSeparator" parent="EndPanel/VBoxContainer"]
 layout_mode = 2
 
@@ -304,7 +344,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "DIE TO FIND OUT"
 vertical_alignment = 1
 uppercase = true
 
@@ -324,7 +364,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "CMON I DARE YOU"
 vertical_alignment = 1
 uppercase = true
 
@@ -344,7 +384,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "GET_RECT"
 vertical_alignment = 1
 uppercase = true
 
@@ -364,7 +404,7 @@ uppercase = true
 self_modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "GOAL: 100%"
 vertical_alignment = 1
 uppercase = true
 
@@ -379,6 +419,11 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NextStage" type="Button" parent="EndPanel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next Stage"
+
 [node name="Restart" type="Button" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -391,3 +436,5 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
+
+[connection signal="pressed" from="EndPanel/VBoxContainer2/NextStage" to="." method="_on_next_stage_pressed"]
