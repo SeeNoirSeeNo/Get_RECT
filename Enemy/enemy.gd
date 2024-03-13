@@ -20,7 +20,8 @@ var offset_max_time : float = 1.00  # Maximum time to update target position
 var speed : int = 50
 var velocity = Vector2()
 var hp : int = 1
-var points : int = 0
+@onready var hp_label = $hp_label
+var bounty : int = 0
 #VARIOUS STATS
 var stun = false
 var knockback : int = 1
@@ -37,6 +38,7 @@ var particle_amount : int = 0
 #METHODS
 func _ready():
 	initialize_offset()
+	hp_label.text = str(hp)
 	add_to_group("enemies")
 	
 func _process(delta):
@@ -57,6 +59,8 @@ func initialize_offset():
 
 func basic_movement_towards_player(delta):
 	if Global.player != null and stun == false:
+		if speed < 20:
+			speed = 20
 		if not use_offset:
 			target_position = Global.player.global_position  # Update the target position each frame if not using offset
 		velocity = global_position.direction_to(target_position)  # Move towards the target position
@@ -67,7 +71,7 @@ func basic_movement_towards_player(delta):
 
 func set_attributes(attributes: EnemyAttributes):
 	hp = attributes.hp
-	points = attributes.points
+	bounty = attributes.bounty
 	offset_chance = attributes.offset_chance
 	offset_range = attributes.offset_range
 	offset_min_time = attributes.offset_min_time
@@ -86,7 +90,7 @@ func set_attributes(attributes: EnemyAttributes):
 func die():
 	if Global.camera != null:
 		Global.camera.screen_shake(screen_shake, 0.2)
-	Global.killBounty += points
+	Global.killBounty += bounty
 	if Global.node_creation_parent != null:
 		var blood_particles_instance = Global.instance_node(blood_particles, global_position, Global.node_creation_parent.get_node("blood"))
 		blood_particles_instance.rotation = velocity.angle()
@@ -105,6 +109,7 @@ func _on_hitbox_area_entered(area):
 		velocity = (global_position - Global.player.global_position).normalized() * knockback  # Knockback direction is away from the player
 		Global.play_sound(impact_sound)
 		hp -= area.get_parent().damage
+		hp_label.text = str(hp)
 		stun = true
 		$Stun_timer.start()
 		var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)

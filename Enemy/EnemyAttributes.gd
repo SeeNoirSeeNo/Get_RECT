@@ -3,8 +3,8 @@ class_name EnemyAttributes
 
 #Core
 var hp = 1
-var speed = 0
-var points = 0
+var speed = 50
+var bounty = 10
 var modulate = Color()
 #Offset
 var offset_chance = 0.0
@@ -21,3 +21,5 @@ var dying_sound = ["dying_1","dying_2","dying_3","dying_4"]
 var particle_scale_amount_min = 0
 var particle_scale_amount_max = 0
 var particle_amount : int = 100  # New attribute for particle amount
+#Skills
+var picked_skills = []
