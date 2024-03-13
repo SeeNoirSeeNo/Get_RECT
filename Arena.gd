@@ -15,9 +15,6 @@ func _ready():
 	Global.current_stage = 1
 	Global.play_music(track_name, -20)
 
-func _process(delta):
-	#print("Stage Timer", stage_timer.get_time_left())
-	pass
 func _exit_tree():
 	Global.node_creation_parent = null
 

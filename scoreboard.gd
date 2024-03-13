@@ -63,13 +63,13 @@ func _on_enemy_spawned(enemy):
 	enemy.enemy_died.connect(self._on_enemy_died)
 
 func _on_enemy_died():
-	print("Enemies left", (get_tree().get_nodes_in_group("enemies").size()))
 	if get_tree().get_nodes_in_group("enemies").size() == 1:
 		openShop()
 
 func openShop():
 	await bloodScan.count_blood_pixels_low_res()
-	bloodScan.active = false
+	_on_score_updated()
+
 	updateHighscores()
 	scoreBoard.visible = true
 	
@@ -86,7 +86,7 @@ func updateHighscores():
 func gameOver():
 	#FINAL BLOOD SCAN
 	await bloodScan.count_blood_pixels_low_res()
-	bloodScan.active = false
+
 	#SET HIGHSCORES
 	updateHighscores()
 	#SHOW & UPDATE EndPanel
@@ -164,6 +164,5 @@ func _on_quitBTN_pressed():
 
 func _on_next_stage_pressed():
 	scoreBoard.visible = false
-	bloodScan.active = true
 	emit_signal("enter_next_stage")
 	update_stage_labels()
