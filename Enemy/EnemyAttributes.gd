@@ -23,3 +23,12 @@ var particle_scale_amount_max = 0
 var particle_amount : int = 100  # New attribute for particle amount
 #Skills
 var picked_skills = []
+#Skills - BULLET STOPPER
+var is_bullet_stopper = false
+var bullet_stopper_duration_min = 0
+var bullet_stopper_duration_max = 0
+#Skills - ATTRACTOR
+var is_bullet_attractor = false
+#Skills - SLOWER
+var is_bullet_slower = false
+var repelling_force = 0.0

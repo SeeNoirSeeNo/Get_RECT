@@ -10,6 +10,9 @@ signal player_died
 @onready var bloodScan = $"../BloodScan"
 
 
+
+
+
 var active_powerup_colors = []
 var speed = 150
 var velocity = Vector2()
@@ -54,11 +57,13 @@ func _process(delta):
 		global_position += speed * velocity * delta
 	
 	if Input.is_action_pressed("click") and Global.node_creation_parent != null and can_shoot and is_dead == false:
-		var bullet_instance = Global.instance_node(bullet,global_position,Global.node_creation_parent)
+		var bullet_instance = bullet.instantiate()
+		bullet_instance.global_position = global_position
 		bullet_instance.damage = damage
 		bullet_instance.bullet_wrap_decay = bullet_wrap_decay
 		bullet_instance.bullet_wrap = bullet_wrap
 		bullet_instance.set_active_powerup_colors(active_powerup_colors.duplicate())
+		arena.add_child(bullet_instance)
 		$Reload_speed.start()
 		can_shoot = false
 

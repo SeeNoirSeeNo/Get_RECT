@@ -29,3 +29,13 @@ func _on_next_stage_pressed():
 	stage_timer.start()
 	objectSpawner.start_spawning()
 	
+
+
+func _on_arena_inside_area_entered(area):
+	if area.get_parent().is_in_group("enemies"):
+		area.get_parent().add_to_group("in_arena")
+
+
+func _on_arena_inside_area_exited(area):
+	if area.get_parent().is_in_group("enemies"):
+		area.get_parent().remove_from_group("in_arena")

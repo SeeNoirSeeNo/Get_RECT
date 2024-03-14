@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7p3wbac6idb4"]
+[gd_scene load_steps=11 format=3 uid="uid://c7p3wbac6idb4"]
 
 [ext_resource type="Script" path="res://Arena.gd" id="1_dwiex"]
 [ext_resource type="PackedScene" uid="uid://d1uqv8wssumwg" path="res://player.tscn" id="2_ax1f8"]
@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="13_l134k"]
 [ext_resource type="Script" path="res://BloodScan.gd" id="16_oeknt"]
 [ext_resource type="PackedScene" uid="uid://cn3d7kv8lwa7l" path="res://scoreboard.tscn" id="17_e16v7"]
-[ext_resource type="PackedScene" uid="uid://v1f43hnd63ys" path="res://PowerUp_Wrap.tscn" id="18_tum7t"]
-[ext_resource type="PackedScene" uid="uid://dot51taso3orw" path="res://PowerUp_Damage.tscn" id="19_6pj5q"]
-[ext_resource type="PackedScene" uid="uid://b3meracix8wih" path="res://PowerUp_ShootingSpeed.tscn" id="20_f3e7x"]
 
 [sub_resource type="Environment" id="Environment_seaom"]
 background_mode = 3
@@ -20,6 +17,9 @@ glow_blend_mode = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6eb4j"]
 size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71iyh"]
+size = Vector2(960, 540)
 
 [node name="Arena" type="Node2D"]
 modulate = Color(0.996094, 0.996094, 0.996094, 1)
@@ -72,6 +72,7 @@ script = ExtResource("11_4ecc0")
 [node name="Area2D" type="Area2D" parent="objectSpawner"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="objectSpawner/Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_6eb4j")
 
 [node name="Enemy_spawn_timer" type="Timer" parent="objectSpawner"]
@@ -81,20 +82,20 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
-[node name="powerUp_Damage" parent="." instance=ExtResource("19_6pj5q")]
-position = Vector2(525, 414)
-
-[node name="powerUp_ShootingSpeed" parent="." instance=ExtResource("20_f3e7x")]
-position = Vector2(779, 394)
-
-[node name="powerUp_Wrap" parent="." instance=ExtResource("18_tum7t")]
-position = Vector2(586, 458)
-
 [node name="stage_timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="arena_inside" type="Area2D" parent="."]
+position = Vector2(640, 360)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arena_inside"]
+shape = SubResource("RectangleShape2D_71iyh")
 
 [connection signal="timeout" from="Camera2D/Screen_shake_time" to="Camera2D" method="_on_screen_shake_time_timeout"]
 [connection signal="timeout" from="objectSpawner/Enemy_spawn_timer" to="objectSpawner" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="objectSpawner/Power_up_spawn_timer" to="objectSpawner" method="_on_power_up_spawn_timer_timeout"]
 [connection signal="timeout" from="stage_timer" to="." method="_on_stage_timer_timeout"]
+[connection signal="area_entered" from="arena_inside" to="." method="_on_arena_inside_area_entered"]
+[connection signal="area_exited" from="arena_inside" to="." method="_on_arena_inside_area_exited"]

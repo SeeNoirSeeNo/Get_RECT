@@ -26,6 +26,13 @@ var bounty : int = 0
 var stun = false
 var knockback : int = 1
 var screen_shake : int = 1
+#SKILL STATS
+var is_bullet_stopper = false
+var bullet_stopper_duration_min = 0
+var bullet_stopper_duration_max = 0
+var is_bullet_attractor = false
+var is_bullet_slower = false
+var repelling_force = 0
 #SOUNDS
 var death_sound = []
 var impact_sound = []
@@ -45,7 +52,6 @@ func _process(delta):
 	basic_movement_towards_player(delta)
 	if hp <= 0:
 		die()
-
 ### MOVEMENT ###
 func initialize_offset():
 	use_offset = randf() < offset_chance # Decide whether this enemy uses offset
@@ -55,8 +61,7 @@ func initialize_offset():
 		offset_timer.timeout.connect(_on_offset_timer_timeout)  # Connect the timer's timeout signal to the _on_timer_timeout function
 		_on_offset_timer_timeout()  # Call the function to set an initial target position
 		offset_timer.start(randf_range(offset_min_time, offset_max_time))  # Start the timer with a random time
-
-
+		
 func basic_movement_towards_player(delta):
 	if Global.player != null and stun == false:
 		if speed < 20:
@@ -85,6 +90,12 @@ func set_attributes(attributes: EnemyAttributes):
 	particle_scale_amount_min = attributes.particle_scale_amount_min
 	particle_scale_amount_max = attributes.particle_scale_amount_max
 	particle_amount = attributes.particle_amount  # Set the particle amount
+	is_bullet_stopper = attributes.is_bullet_stopper
+	bullet_stopper_duration_min = attributes.bullet_stopper_duration_min
+	bullet_stopper_duration_max = attributes.bullet_stopper_duration_max
+	is_bullet_attractor = attributes.is_bullet_attractor
+	is_bullet_slower = attributes.is_bullet_slower
+	repelling_force = attributes.repelling_force
 
 ### DIE ###
 func die():
@@ -128,3 +139,14 @@ func _on_offset_timer_timeout():
 		target_position = Global.player.global_position + offset  # Update the target position
 	if use_offset:
 		offset_timer.start(randf_range(offset_min_time, offset_max_time))  # Restart the timer with a new random time
+
+#STOP BULLET FROM MOVING
+func _on_aoe_area_entered(area):
+	var bullet = area.get_parent()
+	if bullet.is_in_group("Bullets"):
+		if is_bullet_stopper:
+			bullet.stop_bullet(bullet_stopper_duration_min, bullet_stopper_duration_max)
+		if is_bullet_slower:
+			bullet.slow_bullet(repelling_force)
+			
+

@@ -6,6 +6,7 @@ signal enter_next_stage
 @onready var bottomPanel = $BottomPanel
 @onready var leftPanel = $LeftPanel
 @onready var rightPanel = $RightPanel
+@onready var next_stageBTN = $EndPanel/VBoxContainer2/NextStage
 @onready var restartBTN = $EndPanel/VBoxContainer2/Restart
 @onready var quitBTN = $EndPanel/VBoxContainer2/Quit
 @onready var objectSpawner = $"../../objectSpawner"
@@ -91,6 +92,7 @@ func gameOver():
 	updateHighscores()
 	#SHOW & UPDATE EndPanel
 	scoreBoard.visible = true
+	next_stageBTN.visible = false
 	start_counting_sequences()
 
 func start_counting_sequences():

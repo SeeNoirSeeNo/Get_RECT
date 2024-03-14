@@ -4,13 +4,13 @@ extends Node
 
 
 var available_skills = [
-	
+
 	{"name" 		: 	"very_fast",
 	"cost" 			: 	0,
 	"min_stage"		:	3,
 	"conflicts" 	:	["fast", "slow", "very_slow"]
 	},
-	
+
 	{"name" 		: 	"fast",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
@@ -28,24 +28,43 @@ var available_skills = [
 	"min_stage"		:	5,
 	"conflicts" 	:	["very_fast", "fast", "very_slow"]
 	},
-	
+
 	{"name" 		: 	"sturdy",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
-	
+
 	{"name" 		: 	"very_sturdy",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
-	
+
 	{"name" 		: 	"shaker",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
+
+	{"name" 		: 	"bullet_stopper",
+	"cost" 			: 	0,
+	"min_stage"		:	0,
+	"conflicts" 	:	[]
+	},
+	
+	{"name" 		: 	"bullet_attractor",
+	"cost" 			: 	0,
+	"min_stage"		:	0,
+	"conflicts" 	:	[]
+	},
+	
+	{"name" 		: 	"bullet_slower",
+	"cost" 			: 	0,
+	"min_stage"		:	0,
+	"conflicts" 	:	[]
+	},
+	
 ]
 
 func fast(attributes, _stage):
@@ -80,14 +99,25 @@ func shaker(attributes, stage):
 	attributes.screen_shake += stage * 10
 	attributes.bounty += ceil(stage / 3.0) * 25
 
-func agent(attributes, stage):
+func agent(_attributes, _stage):
 	pass #color BLACK so HP is hidden & tooltipp is hidden
 	
-func bullet_slow(attributes, stage):
-	pass #slows bullet in area
+func bullet_stopper(attributes, stage):
+	attributes.is_bullet_stopper = true
+	attributes.bullet_stopper_duration_min = 0.1 * stage
+	attributes.bullet_stopper_duration_max = 0.2 * stage
+	attributes.bounty += ceil(stage / 3.0) * 25
+
+func bullet_attractor(attributes, stage):
+	attributes.hp += stage 
+	attributes.is_bullet_attractor = true
 	
-func desperate(attributes, stage):
+func bullet_slower(attributes, stage):
+	attributes.is_bullet_slower = true 
+	attributes.repelling_force = 0.9 ** stage
+	
+func desperate(_attributes, _stage):
 	pass #faster when HP low
 	
-func confuser(attributes, stage):
+func confuser(_attributes, _stage):
 	pass #player shoots in random direction

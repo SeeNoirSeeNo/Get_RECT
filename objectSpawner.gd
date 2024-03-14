@@ -37,6 +37,7 @@ func pick_random_skills(attributes, stage):
 		var random_skill = EnemySkills.available_skills[randi() % EnemySkills.available_skills.size()]
 		EnemySkills.call(random_skill["name"], attributes, stage)
 		attributes.picked_skills.append(random_skill)
+		print("Stage:", stage)
 		print(random_skill)
 		skill_points -= 1
 
