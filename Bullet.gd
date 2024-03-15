@@ -21,7 +21,7 @@ var attracting_enemy = null
 
 var launch_velocity = Vector2()
 var gravitational_pull_strength = randi_range(100,300)
-
+var slowing_enemies = []
 
 func _ready():
 	var timer = Timer.new()
@@ -36,12 +36,8 @@ func _ready():
 	launch_velocity = velocity.rotated(rotation)
 	velocity = launch_velocity
 
-	
-	
-	
 func set_active_powerup_colors(colors):
 	active_powerup_colors = colors
-
 
 func _on_timer_timeout():
 	damage_label.text = str(damage)
@@ -87,11 +83,28 @@ func find_nearest_attracting_enemy():
 	return nearest_enemy
 
 
-func stop_bullet(duration_min, duration_max):
+func stop_bullet(stop_duration):
+	print("BULLET: STOP START")
 	speed = 0
-	var duration = randf_range(duration_min, duration_max)
-	await get_tree().create_timer(duration).timeout
+	await get_tree().create_timer(stop_duration).timeout
 	speed = original_speed
+	print("BULLET: STOP OVER")
 	
-func slow_bullet(force):
-	speed *= force
+func slow_bullet(enemy, force):
+	slowing_enemies.append([enemy, force])  # Add the enemy and its slow force to the list
+	update_speed()
+
+func remove_slow(enemy):
+	#slowing_enemies = [e for e in slowing_enemies if e[0] != enemy]
+	var new_slowing_enemies = []
+	for e in slowing_enemies:
+		if e[0] != enemy:
+			new_slowing_enemies.append(e)
+	slowing_enemies = new_slowing_enemies
+	update_speed()
+	
+func update_speed():
+	speed = original_speed
+	for e in slowing_enemies:
+		speed *= e[1]  # Apply the slow force of each enemy
+
