@@ -52,19 +52,18 @@ var available_skills = [
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
-	
+
 	{"name" 		: 	"bullet_attractor",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
-	
+
 	{"name" 		: 	"bullet_slower",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
-	
 ]
 
 func fast(attributes, _stage):
@@ -111,7 +110,7 @@ func bullet_stopper(attributes, stage):
 func bullet_attractor(attributes, stage):
 	attributes.hp += stage 
 	attributes.is_bullet_attractor = true
-	
+
 func bullet_slower(attributes, stage):
 	attributes.is_bullet_slower = true 
 	attributes.repelling_force = 0.9 ** stage

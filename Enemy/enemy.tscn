@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bscyfv0l0vw0e"]
+[gd_scene load_steps=6 format=3 uid="uid://bscyfv0l0vw0e"]
 
 [ext_resource type="Texture2D" uid="uid://b4hhkipq6wabg" path="res://Square.png" id="1_2jjtc"]
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="2_juorl"]
+[ext_resource type="Texture2D" uid="uid://chgb7fc3n844f" path="res://Circle.png" id="3_go8b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8sdr"]
 size = Vector2(16, 16)
@@ -32,6 +33,8 @@ offset_left = -19.3333
 offset_top = -12.6667
 offset_right = 18.6667
 offset_bottom = 13.3333
+tooltip_text = "asdasd"
+mouse_filter = 1
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -41,6 +44,19 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletStop"]
 shape = SubResource("CircleShape2D_yvagm")
 
+[node name="BulletStop_Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="BulletStopCircle" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.0196078)
+position = Vector2(-0.0833339, -2.75)
+scale = Vector2(1.44922, 1.44922)
+texture = ExtResource("3_go8b6")
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Stun_timer" to="." method="_on_stun_timer_timeout"]
 [connection signal="area_entered" from="BulletStop" to="." method="_on_aoe_area_entered"]
+[connection signal="area_exited" from="BulletStop" to="." method="_on_bullet_stop_area_exited"]
+[connection signal="timeout" from="BulletStop_Timer" to="." method="_on_bullet_stop_timer_timeout"]

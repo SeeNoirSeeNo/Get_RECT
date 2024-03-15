@@ -86,8 +86,11 @@ func updateHighscores():
 		
 func gameOver():
 	#FINAL BLOOD SCAN
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.visible = false
 	await bloodScan.count_blood_pixels_low_res()
-
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.visible = true
 	#SET HIGHSCORES
 	updateHighscores()
 	#SHOW & UPDATE EndPanel

@@ -20,6 +20,9 @@ var offset_max_time : float = 1.00  # Maximum time to update target position
 var speed : int = 50
 var velocity = Vector2()
 var hp : int = 1
+#@onready var aoe_area = $BulletStop/CollisionShape2D
+@onready var aoe_area = $BulletStop
+@onready var bullet_stop_circle = $BulletStopCircle
 @onready var hp_label = $hp_label
 var bounty : int = 0
 #VARIOUS STATS
@@ -144,9 +147,23 @@ func _on_offset_timer_timeout():
 func _on_aoe_area_entered(area):
 	var bullet = area.get_parent()
 	if bullet.is_in_group("Bullets"):
-		if is_bullet_stopper:
-			bullet.stop_bullet(bullet_stopper_duration_min, bullet_stopper_duration_max)
 		if is_bullet_slower:
-			bullet.slow_bullet(repelling_force)
+			bullet.slow_bullet(self, repelling_force)
 			
 
+func _on_bullet_stop_area_exited(area):
+	var bullet = area.get_parent()
+	if bullet.is_in_group("Bullets"):
+		if is_bullet_slower:
+			bullet.remove_slow(self)
+
+
+func _on_bullet_stop_timer_timeout():
+	bullet_stop_circle.visible = true
+	for bullet_area in aoe_area.get_overlapping_areas():
+		if bullet_area.get_parent().is_in_group("Bullets"):
+			print("Kugel gefunden")
+			var stop_duration = randf_range(bullet_stopper_duration_min, bullet_stopper_duration_max)
+			bullet_area.get_parent().stop_bullet(stop_duration)
+	await get_tree().create_timer(bullet_stopper_duration_max).timeout
+	bullet_stop_circle.visible = false

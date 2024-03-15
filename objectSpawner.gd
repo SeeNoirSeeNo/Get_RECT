@@ -11,6 +11,7 @@ var power_ups = [preload("res://PowerUp_Damage.tscn"), preload("res://PowerUp_Sh
 #VARS
 var enemy_attributes_array = []
 
+
 func _ready():
 	#CONNECT SIGNALS
 	Global.stage_changed.connect(self._on_stage_changed)
