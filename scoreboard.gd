@@ -107,20 +107,24 @@ func set_visibility(group_name, visibility):
 
 func start_counting_sequences():
 	Global.play_sound("coutingUp")
+	print("coutingUp sound 1")
 	await start_count_up_and_down(inGame_ScoreINT.text.to_int(), SB_TotalScoreINT, inGame_ScoreINT)
 	inGame_ScoreINT.text = str(0)
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
 	Global.play_sound("coutingUp")
+	print("coutingUp sound 2")
 	await start_count_up_and_down(inGame_KillBountyINT.text.to_int(), SB_KillBountyINT, inGame_KillBountyINT)
 	inGame_KillBountyINT.text = str(0)	
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
+	print("coutingUp sound 3")
 	Global.play_sound("coutingUp")
 	await start_count_up_and_down(inGame_PixelsINT.text.to_int(), SB_PixelesINT, inGame_PixelsINT)
 	inGame_PixelsINT.text = str(0)
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
+	print("coutingUp sound 4")
 	Global.play_sound("coutingUp")
 	await start_count_up_and_down_percentage(inGame_CoverageINT.text.to_float(), SB_CoverageINT, inGame_CoverageINT)
 	inGame_CoverageINT.text = str(0)
@@ -172,6 +176,7 @@ func _on_score_updated():
 func update_stage_labels():
 	inGame_StageINT.text = str(Global.current_stage)
 	SB_StageINT.text = str(Global.current_stage)
+	
 
 
 
@@ -179,9 +184,8 @@ func _on_player_died():
 		gameOver()
 
 func _on_restartBTN_pressed():
-	#EndPanel.visible = false
-	#get_tree().reload_current_scene()
-	pass
+	get_tree().reload_current_scene()
+
 	
 func _on_quitBTN_pressed():
 	get_tree().quit()
