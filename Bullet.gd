@@ -15,9 +15,10 @@ var look_once = true
 var is_stopped = false
 var bullet_wrap = 0
 var bullet_wrap_decay = 0
-#var bullet_sounds = ["shoot_4", "shoot_5", "shoot_6",]
 var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3", "shoot_4", "shoot_5", "shoot_6"]
 var attracting_enemy = null
+var debris_amount_min = 1
+var debris_amount_max = 2
 
 var launch_velocity = Vector2()
 var gravitational_pull_strength = randi_range(100,300)
@@ -68,6 +69,10 @@ func _process(delta):
 			var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)
 			if active_powerup_colors.size() > 0:
 				_debris_instance.modulate = active_powerup_colors[color_ID]
+			#_debris_instance.scale_amount_min = 5
+			#_debris_instance.scale_amount_max = 25
+			_debris_instance.amount = randi_range(debris_amount_min, debris_amount_max)
+			_debris_instance.rotation = velocity.angle() + PI
 			queue_free()
 
 func find_nearest_attracting_enemy():

@@ -93,7 +93,6 @@ func set_attributes(attributes: EnemyAttributes):
 	modulate = attributes.modulate
 	particle_scale_amount_min = attributes.particle_scale_amount_min
 	particle_scale_amount_max = attributes.particle_scale_amount_max
-	print("ATTRIBUTE-MIN:", attributes.particle_scale_amount_min, " ATTRIBUTE-MAX:", particle_scale_amount_max)
 	particle_amount = attributes.particle_amount  # Set the particle amount
 	is_bullet_stopper = attributes.is_bullet_stopper
 	bullet_stopper_duration_min = attributes.bullet_stopper_duration_min
@@ -135,6 +134,12 @@ func _on_hitbox_area_entered(area):
 		$Stun_timer.start()
 		var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)
 		_debris_instance.modulate = area.get_parent().modulate
+		_debris_instance.amount = randi_range(area.get_parent().debris_amount_min, area.get_parent().debris_amount_min)
+		_debris_instance.spread = randf_range(85.0, 180)
+		if hp > 0:
+			_debris_instance.rotation = area.get_parent().velocity.angle() + PI
+		else:
+			_debris_instance.rotation = area.get_parent().velocity.angle()
 		area.get_parent().queue_free()
 
 

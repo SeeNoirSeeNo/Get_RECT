@@ -6,6 +6,7 @@ extends Node2D
 @onready var scoreboard = $Control/Scoreboard
 @onready var stage_timer = $stage_timer
 var stage_timer_duration = 10
+
 func _ready():
 	#Signals
 	scoreboard.enter_next_stage.connect(self._on_next_stage_pressed)

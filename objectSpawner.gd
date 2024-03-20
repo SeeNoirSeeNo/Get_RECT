@@ -38,9 +38,6 @@ func pick_random_skills(attributes, stage):
 		EnemySkills.call(random_skill["name"], attributes, stage)
 		attributes.picked_skills.append(random_skill)
 		#attributes.enemy_type_data["skills"].append(skill_data)
-		#print(skill_data)
-		print("Stage:", stage)
-		print(attributes.skill_data)
 		skill_points -= 1
 
 func initilize_attributes(attributes, stage):
@@ -58,8 +55,6 @@ func initilize_attributes(attributes, stage):
 	attributes.screen_shake = randi() % 5 + 1 # Randomize the screen_shake between 1 and 5
 	attributes.particle_scale_amount_min = 0.01
 	attributes.particle_scale_amount_max = 0.08
-	print("OBJ-MIN:", attributes.particle_scale_amount_min, " OBJ-MAX:", attributes.particle_scale_amount_max)
-	
 	attributes.particle_amount = 4
 
 func _on_enemy_spawn_timer_timeout():
@@ -71,7 +66,7 @@ func _on_enemy_spawn_timer_timeout():
 	var attributes = enemy_attributes_array.pick_random()
 	enemy.set_attributes(attributes)
 	find_enemy_spawn_position(enemy)
-	get_tree().root.add_child(enemy)
+	get_parent().get_node("Enemies").add_child(enemy)
 	emit_signal("enemy_spawned", enemy)
 	var difficulty_factor = 1 + (Global.difficulty_setting) * 0.1
 	var new_wait_time = 1 / (log(Global.current_stage + 2) * difficulty_factor)
