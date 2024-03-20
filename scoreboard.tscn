@@ -427,7 +427,8 @@ text = "Next Stage"
 [node name="Restart" type="Button" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Restart"
+tooltip_text = "I am as useless as a fart in a space suit"
+text = "Useless button"
 
 [node name="HSeparator" type="HSeparator" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2

@@ -7,6 +7,8 @@ var color = Color.WHITE
 var base_color = color
 var duration = 5.0
 
+
+
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Player"):
 		activate()

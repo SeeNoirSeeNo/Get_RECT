@@ -4,6 +4,7 @@ signal enemy_died
 #PRELOAD SCENES
 var blood_particles = preload("res://blood_particles.tscn")
 var debris = preload("res://hit_debris.tscn")
+var floating_points = preload("res://floating_points.tscn")
 #COLOR
 @onready var current_color = modulate
 #MOVEMENT-RELATED
@@ -40,8 +41,8 @@ var repelling_force = 0
 var death_sound = []
 var impact_sound = []
 #Particles
-var particle_scale_amount_min : int = 0
-var particle_scale_amount_max : int = 0
+var particle_scale_amount_min : float = 0
+var particle_scale_amount_max : float = 0
 var particle_amount : int = 0
 
 
@@ -92,6 +93,7 @@ func set_attributes(attributes: EnemyAttributes):
 	modulate = attributes.modulate
 	particle_scale_amount_min = attributes.particle_scale_amount_min
 	particle_scale_amount_max = attributes.particle_scale_amount_max
+	print("ATTRIBUTE-MIN:", attributes.particle_scale_amount_min, " ATTRIBUTE-MAX:", particle_scale_amount_max)
 	particle_amount = attributes.particle_amount  # Set the particle amount
 	is_bullet_stopper = attributes.is_bullet_stopper
 	bullet_stopper_duration_min = attributes.bullet_stopper_duration_min
@@ -102,6 +104,7 @@ func set_attributes(attributes: EnemyAttributes):
 
 ### DIE ###
 func die():
+	
 	if Global.camera != null:
 		Global.camera.screen_shake(screen_shake, 0.2)
 	Global.killBounty += bounty
@@ -111,9 +114,13 @@ func die():
 		blood_particles_instance.color = current_color
 		blood_particles_instance.scale_amount_min = particle_scale_amount_min  # Set the particle size
 		blood_particles_instance.scale_amount_max = particle_scale_amount_max # Set the particle size
+		print("MIN:", particle_scale_amount_min, "MAX:", particle_scale_amount_max)
 		blood_particles_instance.amount = particle_amount  # Set the particle amount
-		emit_signal("enemy_died")
-	#Global.play_sound(death_sound)
+		emit_signal("enemy_died", current_color)
+		var floating_points_instance = Global.instance_node(floating_points, global_position, Global.node_creation_parent.get_node("floating_points"))
+		floating_points_instance.update_label(bounty, current_color)
+
+	Global.play_sound(death_sound)
 	queue_free()
 
 ### COLLISION ###
@@ -162,7 +169,6 @@ func _on_bullet_stop_timer_timeout():
 	bullet_stop_circle.visible = true
 	for bullet_area in aoe_area.get_overlapping_areas():
 		if bullet_area.get_parent().is_in_group("Bullets"):
-			print("Kugel gefunden")
 			var stop_duration = randf_range(bullet_stopper_duration_min, bullet_stopper_duration_max)
 			bullet_area.get_parent().stop_bullet(stop_duration)
 	await get_tree().create_timer(bullet_stopper_duration_max).timeout

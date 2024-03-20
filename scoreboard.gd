@@ -63,7 +63,8 @@ func connect_signals():
 func _on_enemy_spawned(enemy):
 	enemy.enemy_died.connect(self._on_enemy_died)
 
-func _on_enemy_died():
+func _on_enemy_died(enemy_color):
+	inGame_KillBountyINT.self_modulate = enemy_color
 	if get_tree().get_nodes_in_group("enemies").size() == 1:
 		openShop()
 
@@ -86,11 +87,11 @@ func updateHighscores():
 		
 func gameOver():
 	#FINAL BLOOD SCAN
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		enemy.visible = false
+	set_visibility("enemies", false)
+	set_visibility("powerups", false)
 	await bloodScan.count_blood_pixels_low_res()
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		enemy.visible = true
+	set_visibility("enemies", true)
+	set_visibility("powerups", true)
 	#SET HIGHSCORES
 	updateHighscores()
 	#SHOW & UPDATE EndPanel
@@ -98,15 +99,34 @@ func gameOver():
 	next_stageBTN.visible = false
 	start_counting_sequences()
 
+
+func set_visibility(group_name, visibility):
+	for node in get_tree().get_nodes_in_group(group_name):
+		node.visible = visibility
+
+
 func start_counting_sequences():
+	Global.play_sound("coutingUp")
 	await start_count_up_and_down(inGame_ScoreINT.text.to_int(), SB_TotalScoreINT, inGame_ScoreINT)
 	inGame_ScoreINT.text = str(0)
+	Global.stop_sound("coutingUp")
+	await get_tree().create_timer(0.7).timeout
+	Global.play_sound("coutingUp")
 	await start_count_up_and_down(inGame_KillBountyINT.text.to_int(), SB_KillBountyINT, inGame_KillBountyINT)
-	inGame_KillBountyINT.text = str(0)
+	inGame_KillBountyINT.text = str(0)	
+	Global.stop_sound("coutingUp")
+	await get_tree().create_timer(0.7).timeout
+	Global.play_sound("coutingUp")
 	await start_count_up_and_down(inGame_PixelsINT.text.to_int(), SB_PixelesINT, inGame_PixelsINT)
 	inGame_PixelsINT.text = str(0)
+	Global.stop_sound("coutingUp")
+	await get_tree().create_timer(0.7).timeout
+	Global.play_sound("coutingUp")
 	await start_count_up_and_down_percentage(inGame_CoverageINT.text.to_float(), SB_CoverageINT, inGame_CoverageINT)
 	inGame_CoverageINT.text = str(0)
+	Global.stop_sound("coutingUp")
+
+
 
 
 # Coroutine to count up and down the score
@@ -145,7 +165,7 @@ func _on_score_updated():
 	inGame_CoverageINT.text = str(Global.coverage) + "%"
 	#Update Color
 	inGame_ScoreINT.self_modulate = Global.pickRandomColor()
-	inGame_KillBountyINT.self_modulate = Global.pickRandomColor()
+	#inGame_KillBountyINT.self_modulate = Global.pickRandomColor()
 	inGame_PixelsINT.self_modulate = Global.pickRandomColor()
 	inGame_CoverageINT.self_modulate = Global.pickRandomColor()
 

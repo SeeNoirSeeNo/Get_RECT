@@ -84,11 +84,9 @@ func find_nearest_attracting_enemy():
 
 
 func stop_bullet(stop_duration):
-	print("BULLET: STOP START")
 	speed = 0
 	await get_tree().create_timer(stop_duration).timeout
 	speed = original_speed
-	print("BULLET: STOP OVER")
 	
 func slow_bullet(enemy, force):
 	slowing_enemies.append([enemy, force])  # Add the enemy and its slow force to the list

@@ -2,6 +2,7 @@ extends Resource
 class_name EnemyAttributes
 
 #Core
+var stage = 1
 var hp = 1
 var speed = 50
 var bounty = 10
@@ -19,7 +20,8 @@ var impact_sound = ["impact_1", "impact_2"]
 var dying_sound = ["dying_1","dying_2","dying_3","dying_4"]
 #Particles
 var particle_scale_amount_min = 0
-var particle_scale_amount_max = 0
+var particle_scale_amount_max = 0.06
+
 var particle_amount : int = 100  # New attribute for particle amount
 #Skills
 var picked_skills = []
@@ -32,3 +34,5 @@ var is_bullet_attractor = false
 #Skills - SLOWER
 var is_bullet_slower = false
 var repelling_force = 0.0
+
+var skill_data = []

@@ -26,6 +26,7 @@ func _exit_tree():
 	Global.score_updated.disconnect(self._on_score_updated)
 
 func _on_score_updated():
-	if current_track != null:
-		var new_speed = 1.0 + Global.score / 50000.0  # Adjust this formula as needed
-		current_track.pitch_scale = new_speed
+	pass
+#	if current_track != null:
+#		var new_speed = 1.0 + Global.score / 50000.0  # Adjust this formula as needed
+#		current_track.pitch_scale = new_speed

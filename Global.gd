@@ -73,10 +73,11 @@ func instance_node(node,location,parent):
 	node_instance.global_position = location
 	return node_instance
 
-func play_sound(sound, volume = 0.0):
+func play_sound(sound, volume = 0.0, pitch = 0.0):
 	if sound_controller != null and music_turned_off == false:
 		if sound_controller.has_node(sound):
 			sound_controller.get_node(sound).volume_db += volume
+			sound_controller.get_node(sound).pitch_scale += pitch
 			sound_controller.get_node(sound).play()
 
 func stop_sound(sound):

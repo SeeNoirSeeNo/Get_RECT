@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7p3wbac6idb4"]
+[gd_scene load_steps=12 format=3 uid="uid://c7p3wbac6idb4"]
 
 [ext_resource type="Script" path="res://Arena.gd" id="1_dwiex"]
 [ext_resource type="PackedScene" uid="uid://d1uqv8wssumwg" path="res://player.tscn" id="2_ax1f8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="5_riky4"]
+[ext_resource type="PackedScene" uid="uid://1mma1nplhk88" path="res://Enemy/enemy_stats.tscn" id="8_ovyj2"]
 [ext_resource type="Script" path="res://objectSpawner.gd" id="11_4ecc0"]
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="13_l134k"]
 [ext_resource type="Script" path="res://BloodScan.gd" id="16_oeknt"]
@@ -87,11 +88,16 @@ wait_time = 10.0
 autostart = true
 
 [node name="arena_inside" type="Area2D" parent="."]
+visible = false
 position = Vector2(640, 360)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arena_inside"]
 shape = SubResource("RectangleShape2D_71iyh")
+
+[node name="enemy_stats" parent="." instance=ExtResource("8_ovyj2")]
+
+[node name="floating_points" type="Node" parent="."]
 
 [connection signal="timeout" from="Camera2D/Screen_shake_time" to="Camera2D" method="_on_screen_shake_time_timeout"]
 [connection signal="timeout" from="objectSpawner/Enemy_spawn_timer" to="objectSpawner" method="_on_enemy_spawn_timer_timeout"]

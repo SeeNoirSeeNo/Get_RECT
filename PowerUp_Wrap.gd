@@ -8,6 +8,7 @@ func _ready():
 	ID = "PowerUp_Wrap"
 	color = Color8(0,114,0)
 	self_modulate = color
+	add_to_group("powerups")
 	
 func activate():
 	print(ID, " Active")

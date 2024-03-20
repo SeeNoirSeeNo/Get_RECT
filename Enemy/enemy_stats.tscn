@@ -1,0 +1,474 @@
+[gd_scene load_steps=4 format=3 uid="uid://1mma1nplhk88"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_stats.gd" id="1_w0qvu"]
+[ext_resource type="Texture2D" uid="uid://b4hhkipq6wabg" path="res://Square.png" id="2_44jqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbhgw"]
+size = Vector2(16, 16)
+
+[node name="enemy_stats" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+script = ExtResource("1_w0qvu")
+
+[node name="representations" type="Node" parent="."]
+
+[node name="rep1" type="Node2D" parent="representations"]
+position = Vector2(18, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep1"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep1"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep1/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep2" type="Node2D" parent="representations"]
+position = Vector2(42, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep2"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep2"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep2/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep3" type="Node2D" parent="representations"]
+position = Vector2(66, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep3"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep3"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep3/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep4" type="Node2D" parent="representations"]
+position = Vector2(90, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep4"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep4"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep4/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep5" type="Node2D" parent="representations"]
+position = Vector2(114, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep5"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep5"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep5/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep6" type="Node2D" parent="representations"]
+position = Vector2(138, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep6"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep6"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep6/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep7" type="Node2D" parent="representations"]
+position = Vector2(18, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep7"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep7"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep7/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep8" type="Node2D" parent="representations"]
+position = Vector2(42, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep8"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep8"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep8/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep9" type="Node2D" parent="representations"]
+position = Vector2(66, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep9"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep9"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep9/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep10" type="Node2D" parent="representations"]
+position = Vector2(90, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep10"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep10"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep10/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep11" type="Node2D" parent="representations"]
+position = Vector2(114, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep11"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep11"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep11/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep12" type="Node2D" parent="representations"]
+position = Vector2(138, 123)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep12"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep12"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep12/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep13" type="Node2D" parent="representations"]
+position = Vector2(18, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep13"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep13"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep13/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep14" type="Node2D" parent="representations"]
+position = Vector2(42, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep14"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep14"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep14/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep15" type="Node2D" parent="representations"]
+position = Vector2(66, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep15"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep15"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep15/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep16" type="Node2D" parent="representations"]
+position = Vector2(90, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep16"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep16"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep16/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep17" type="Node2D" parent="representations"]
+position = Vector2(114, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep17"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep17"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep17/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="rep18" type="Node2D" parent="representations"]
+position = Vector2(138, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="representations/rep18"]
+texture = ExtResource("2_44jqm")
+
+[node name="Area2D" type="Area2D" parent="representations/rep18"]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="representations/rep18/Area2D"]
+shape = SubResource("RectangleShape2D_dbhgw")
+
+[node name="StatsPanel" type="Panel" parent="."]
+self_modulate = Color(0.0352941, 0.254902, 1, 1)
+z_index = 5
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StageINT" type="Label" parent="StatsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Enemy" type="Label" parent="StatsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enemy"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Stats" type="Label" parent="StatsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stats"
+vertical_alignment = 1
+
+[node name="Core" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Core"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HPSTR" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HPINT" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Core"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedSTR" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpeedINT" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "50"
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Core"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BountySTR" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bounty:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BountyINT" type="Label" parent="StatsPanel/VBoxContainer/Core/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Special" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="KnockbackSTR" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Knockback:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="KnockbackINT" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BehaviorSTR" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Behavior:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BehaviorINT" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Behavior"
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BloodAmountSTR" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blood amount:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BloodAmountINT" type="Label" parent="StatsPanel/VBoxContainer/Special/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+vertical_alignment = 1
+
+[node name="Special2" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScreenshakeSTR" type="Label" parent="StatsPanel/VBoxContainer/Special2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Screenshake:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScreenshakeINT" type="Label" parent="StatsPanel/VBoxContainer/Special2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StatsPanel/VBoxContainer/Special2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BloodSize" type="Label" parent="StatsPanel/VBoxContainer/Special2/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blood size:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BloodSizeINT" type="Label" parent="StatsPanel/VBoxContainer/Special2/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Enemy" type="Label" parent="StatsPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enemy"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Skills" type="Label" parent="StatsPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skills"
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillsInfo" type="RichTextLabel" parent="StatsPanel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 65.0
+offset_right = 132.0
+offset_bottom = 91.0
+text = "ENEMY STATS"
