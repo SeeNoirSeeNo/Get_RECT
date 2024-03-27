@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dei3empqdqm4v"]
+[gd_scene load_steps=33 format=3 uid="uid://dei3empqdqm4v"]
 
 [ext_resource type="Script" path="res://sound_controller.gd" id="1_2cawy"]
 [ext_resource type="AudioStream" uid="uid://d218w6n23cvsp" path="res://Sounds/dying_1.wav" id="3_aihwy"]
@@ -29,6 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://2qre08p1ei2o" path="res://Sounds/Music/DavidKBD - Eternity Pack - 08 - While We Sleep - loop.ogg" id="25_8mux7"]
 [ext_resource type="AudioStream" uid="uid://vrxram71473w" path="res://Sounds/Music/DavidKBD - Eternity Pack - 07 - Suffocation - loop.ogg" id="25_yf38y"]
 [ext_resource type="AudioStream" uid="uid://ol5rx6drbv7k" path="res://Sounds/scoure_count.wav" id="26_oy4o7"]
+[ext_resource type="AudioStream" uid="uid://beu0e0fe1r87o" path="res://Sounds/Shop/skill_bought.wav" id="30_iy4xe"]
+[ext_resource type="AudioStream" uid="uid://ddqrauc88mfm0" path="res://Sounds/Shop/pickupCoin.wav" id="31_iy74a"]
+[ext_resource type="AudioStream" uid="uid://x7i8q413u6kh" path="res://Sounds/Shop/stagestart.wav" id="32_3wsl3"]
 
 [node name="Sound_controller" type="Node2D"]
 script = ExtResource("1_2cawy")
@@ -132,3 +135,14 @@ stream = ExtResource("24_66ld4")
 
 [node name="coutingUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_oy4o7")
+
+[node name="skill_bought" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_iy4xe")
+
+[node name="countdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_iy74a")
+volume_db = -8.0
+
+[node name="stagestart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_3wsl3")
+volume_db = -8.0

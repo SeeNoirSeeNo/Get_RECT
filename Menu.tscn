@@ -29,15 +29,82 @@ theme_override_constants/margin_bottom = 25
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Menu_label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "Woohoo!!!
-You found a secret message!
-There is no reward.
-Sorry :("
-mouse_filter = 0
-text = "MENU"
-horizontal_alignment = 1
+
+[node name="SkillpointsSTR2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(┛ಠДಠ)┛彡┻━┻"
+horizontal_alignment = 2
+
+[node name="SkillpointsINT2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "٩(•౪•٩)"
+
+[node name="SkillpointsSTR6" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(ಠ ∩ಠ)"
+horizontal_alignment = 2
+
+[node name="SkillpointsINT6" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(¬_¬)"
+
+[node name="SkillpointsSTR3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "GET"
+horizontal_alignment = 2
+
+[node name="SkillpointsINT3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_vertical = 0
+text = "RECT"
+
+[node name="SkillpointsSTR4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(っ˘з(˘⌣˘ )"
+horizontal_alignment = 2
+
+[node name="SkillpointsINT4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(′︿‵｡)"
+
+[node name="SkillpointsSTR5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "'(ᗒᗣᗕ)՞ "
+horizontal_alignment = 2
+
+[node name="SkillpointsINT5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "┻━┻ ︵ ლ(ಠ益ಠლ)"
 
 [node name="Menu_Separator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -47,6 +114,22 @@ layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SkillpointsSTR" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skillpoints:"
+horizontal_alignment = 2
+
+[node name="SkillpointsINT" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1510950891"
 
 [node name="Play_container" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -75,6 +158,19 @@ text = "Options
 "
 icon_alignment = 1
 
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="HSeparator6" type="HSeparator" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
 [node name="Quit_container" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
@@ -90,100 +186,13 @@ text = "Quit
 "
 icon_alignment = 1
 
-[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "ENEMIES"
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-
-[node name="Enemy_container" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-tooltip_text = "GREEN ENEMY
-HP = 1
-SCORE = +10
-SPEED = 125
-"
-
-[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control2"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-tooltip_text = "YELLOW ENEMY
-HP = 2
-SCORE = +20
-SPEED = 100
-"
-
-[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control3"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-tooltip_text = "BLUE ENEMY
-HP = 3
-SCORE = +30
-SPEED = 75
-"
-
-[node name="Control4" type="Control" parent="MarginContainer/VBoxContainer/Enemy_container"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Enemy_container/Control4"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-tooltip_text = "RED ENEMY
-HP = 8
-SCORE = +80
-SPEED = 50
-"
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-
-[node name="HSeparator5" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="HSeparator6" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "POWERUPS"
+text = "UNLOCKED POWERUPS"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

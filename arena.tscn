@@ -78,7 +78,7 @@ shape = SubResource("RectangleShape2D_6eb4j")
 autostart = true
 
 [node name="Power_up_spawn_timer" type="Timer" parent="objectSpawner"]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [node name="stage_timer" type="Timer" parent="."]
@@ -86,7 +86,6 @@ wait_time = 10.0
 autostart = true
 
 [node name="arena_inside" type="Area2D" parent="."]
-visible = false
 position = Vector2(640, 360)
 collision_mask = 2
 

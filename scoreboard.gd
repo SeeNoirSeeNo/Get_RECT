@@ -1,6 +1,8 @@
 extends Control
 #SIGNALS
 signal enter_next_stage
+#PRELOADS
+var shop = preload("res://Shop.tscn")
 #NODES
 @onready var topPanel = $TopPanel
 @onready var bottomPanel = $BottomPanel
@@ -35,46 +37,80 @@ signal enter_next_stage
 @onready var SB_PixelesINT = $EndPanel/VBoxContainer/HBoxContainer4/END_PixelesINT
 @onready var SB_CoverageSTR = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageSTR
 @onready var SB_CoverageINT = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageINT
+@onready var countdownLabel = $Countdown
+
+
 
 func _ready():
-	#Connect Signals
-	connect_signals()
-	#Hide EndPanel
-	scoreBoard.visible = false
+	#Function to Connect all Signals
+	connect_signals() 
+	#Hide the Scoreboard
+	scoreBoard.visible = false	
 
-	#Reset & Set Points & Stage
+	#Reset & Set Points & Labels
 	update_stage_labels()
+	update_highscore_labels()
+	reset_global_points()
+	
+func update_highscore_labels():
+	#Updaten Highscore Labels
 	HS_TotalScoreINT.text = str(Global.highscoreScore)
-	Global.score = 0
 	HS_KillBountyINT.text = str(Global.highscoreKillBounty)
-	Global.killBounty = 0
 	HS_PixelsINT.text = str(Global.highscorePixels)
-	Global.pixels = 0
 	HS_CoverageINT.text = str(Global.highscoreCoverage)
+	#Reset Global Scores
+func reset_global_points():
+	Global.score = 0
+	Global.killBounty = 0
+	Global.pixels = 0
 	Global.coverage = 0
 
-func connect_signals():
-	player.player_died.connect(self._on_player_died)
-	restartBTN.pressed.connect(self._on_restartBTN_pressed)
-	quitBTN.pressed.connect(self._on_quitBTN_pressed)
-	Global.score_updated.connect(self._on_score_updated)
-	objectSpawner.enemy_spawned.connect(self._on_enemy_spawned)
-	
+
+# CONNECTS "enemy_died" SIGNAL OF NEW SPAWNED ENEMIES
 func _on_enemy_spawned(enemy):
 	enemy.enemy_died.connect(self._on_enemy_died)
 
+# CHECK FOR STAGE TRANSITION & CHANGE BOUNTY LABEL COLOR
 func _on_enemy_died(enemy_color):
 	inGame_KillBountyINT.self_modulate = enemy_color
-	if get_tree().get_nodes_in_group("enemies").size() == 1:
-		openShop()
+	if get_tree().get_nodes_in_group("Enemies").size() == 1:
+		stage_transition()
 
-func openShop():
+# THE TRANSITION BETWEEN STAGES
+func stage_transition():
 	await bloodScan.count_blood_pixels_low_res()
 	_on_score_updated()
-
 	updateHighscores()
-	scoreBoard.visible = true
+	await start_countdown()  # Add this line
+	go_to_next_stage()
+
+
+
+# New function for the countdown
+func start_countdown():
 	
+	countdownLabel.visible = true  # Make the label visible
+	for i in range(3, 0, -1):  # Countdown from 3 to 1
+		
+		countdownLabel.text = str(i) + "..."
+		countdownLabel.self_modulate = Global.pickRandomColor()
+		countdownLabel.scale = Vector2(1, 1)  # Reset the scale
+		Global.play_sound("countdown")
+		# Pulsate the label
+		for x in range(50):
+			countdownLabel.scale += Vector2(0.02, 0.02)
+			await get_tree().create_timer(0.001).timeout
+		for x in range(50):
+			countdownLabel.scale -= Vector2(0.02, 0.02)
+			await get_tree().create_timer(0.001).timeout
+	countdownLabel.text = "Stage " + str(Global.current_stage + 1) + " START!"
+	Global.play_sound("stagestart")
+	await get_tree().create_timer(1).timeout  # Wait for 1 second before hiding the label
+	countdownLabel.visible = false  # Hide the label
+
+
+
+# IF CURRENT "SKPC" > "HIGHSCORE SKPC" -> UPDATE
 func updateHighscores():
 	if Global.score > Global.highscoreScore:
 		Global.highscoreScore = Global.score
@@ -84,47 +120,52 @@ func updateHighscores():
 		Global.highscorePixels = Global.pixels
 	if Global.coverage > Global.highscoreCoverage:
 		Global.highscoreCoverage = Global.coverage
-		
+
 func gameOver():
+	#DEFINE WHAT TO HIDE/SHOW
+	var groups = ["Enemies", "Powerups", "Bullets", "Player"]
 	#FINAL BLOOD SCAN
-	set_visibility("enemies", false)
-	set_visibility("powerups", false)
+	set_visibility(groups, false)
+	await get_tree().create_timer(0.1).timeout
 	await bloodScan.count_blood_pixels_low_res()
-	set_visibility("enemies", true)
-	set_visibility("powerups", true)
+	set_visibility(groups, true)
 	#SET HIGHSCORES
+	_on_score_updated()
 	updateHighscores()
 	#SHOW & UPDATE EndPanel
 	scoreBoard.visible = true
 	next_stageBTN.visible = false
 	start_counting_sequences()
+	PlayerSkills.skillpoints += Global.score
 
 
-func set_visibility(group_name, visibility):
-	for node in get_tree().get_nodes_in_group(group_name):
-		node.visible = visibility
+func set_visibility(groups, visibility):
+	for group in groups:
+		for node in get_tree().get_nodes_in_group(group):
+			node.queue_free()
+			node.visible = visibility
 
 
 func start_counting_sequences():
 	Global.play_sound("coutingUp")
-	print("coutingUp sound 1")
+
 	await start_count_up_and_down(inGame_ScoreINT.text.to_int(), SB_TotalScoreINT, inGame_ScoreINT)
 	inGame_ScoreINT.text = str(0)
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
 	Global.play_sound("coutingUp")
-	print("coutingUp sound 2")
+
 	await start_count_up_and_down(inGame_KillBountyINT.text.to_int(), SB_KillBountyINT, inGame_KillBountyINT)
 	inGame_KillBountyINT.text = str(0)	
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
-	print("coutingUp sound 3")
+
 	Global.play_sound("coutingUp")
 	await start_count_up_and_down(inGame_PixelsINT.text.to_int(), SB_PixelesINT, inGame_PixelsINT)
 	inGame_PixelsINT.text = str(0)
 	Global.stop_sound("coutingUp")
 	await get_tree().create_timer(0.7).timeout
-	print("coutingUp sound 4")
+
 	Global.play_sound("coutingUp")
 	await start_count_up_and_down_percentage(inGame_CoverageINT.text.to_float(), SB_CoverageINT, inGame_CoverageINT)
 	inGame_CoverageINT.text = str(0)
@@ -186,12 +227,31 @@ func _on_player_died():
 func _on_restartBTN_pressed():
 	get_tree().reload_current_scene()
 
-	
+func _on_shop_pressed():
+	get_tree().change_scene_to_file("res://Shop.tscn")
+
 func _on_quitBTN_pressed():
 	get_tree().quit()
 
 
 func _on_next_stage_pressed():
 	scoreBoard.visible = false
+	go_to_next_stage()
+
+func go_to_next_stage():
 	emit_signal("enter_next_stage")
 	update_stage_labels()
+
+
+
+
+#Function to Connect all Signals
+func connect_signals():
+	player.player_died.connect(self._on_player_died)
+	restartBTN.pressed.connect(self._on_restartBTN_pressed)
+	quitBTN.pressed.connect(self._on_quitBTN_pressed)
+	Global.score_updated.connect(self._on_score_updated)
+	objectSpawner.enemy_spawned.connect(self._on_enemy_spawned)
+
+
+

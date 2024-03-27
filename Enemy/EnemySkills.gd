@@ -3,6 +3,7 @@ extends Node
 
 var available_skills = [
 
+###///Cost, Min_Stage & Conflicts not implemented yet ///###
 	{"name" 		: 	"very_fast",
 	"cost" 			: 	0,
 	"min_stage"		:	3,

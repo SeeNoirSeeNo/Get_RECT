@@ -2,7 +2,7 @@ extends Node
 
 signal score_updated
 signal stage_changed(new_stage)
-
+signal skillpoints_changed(skillpoints)
 ###//ARENA//###
 var arena_offset_left = 645
 var arena_offset_right = 635
@@ -35,7 +35,7 @@ var score:
 	set(value):
 		_score = value
 		emit_signal("score_updated")
-		
+
 ###//KILLBOUNTY//###
 var _killBounty = 0
 var killBounty:
@@ -76,9 +76,11 @@ func instance_node(node,location,parent):
 func play_sound(sound, volume = 0.0, pitch = 0.0):
 	if sound_controller != null and music_turned_off == false:
 		if sound_controller.has_node(sound):
-			sound_controller.get_node(sound).volume_db += volume
+			#WE NEVER SET IT BACK TO ORIGINAL VOLUME, SO IT WILL BE QUITE!!!
+			#sound_controller.get_node(sound).volume_db += volume
 			sound_controller.get_node(sound).pitch_scale += pitch
 			sound_controller.get_node(sound).play()
+
 
 func stop_sound(sound):
 	if sound_controller != null:

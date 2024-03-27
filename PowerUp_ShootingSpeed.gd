@@ -8,7 +8,7 @@ func _ready():
 	ID = "PowerUp_AttackSpeed"
 	color = Color8(240,251,27)
 	self_modulate = color
-	add_to_group("powerups")
+	add_to_group("Powerups")
 func activate():
 	print(ID, " Active")
 	var player = get_node("/root/Arena/Player")
