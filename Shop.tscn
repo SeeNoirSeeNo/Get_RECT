@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ai7dlil5gr8"]
+
+[ext_resource type="Script" path="res://shop.gd" id="1_tf7m6"]
+[ext_resource type="PackedScene" uid="uid://cruvada5eowm0" path="res://TestSkill.tscn" id="2_kbxip"]
+
+[node name="TestShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tf7m6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="skillpoints_STR" type="Label" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
+self_modulate = Color(0.886275, 0.164706, 0.172549, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SKILLPOINTS:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="skillpoints_INT" type="Label" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
+self_modulate = Color(1, 0.290196, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1590105015"
+vertical_alignment = 1
+
+[node name="Bullet damage" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Bullet damage"
+upgrade_increment = 1
+upgrade_cost = 50000
+upgrade_cost_increase = 50000
+initial_min_value = 0
+initial_max_value = 1
+
+[node name="Bullet speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Bullet speed"
+upgrade_increment = 5
+upgrade_cost = 500
+upgrade_cost_increase = 500
+
+[node name="Attack speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Attack speed"
+upgrade_cost = 10000
+upgrade_cost_increase = 10000
+initial_min_value = 1
+initial_max_value = 120
+
+[node name="Movement speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+upgrade_increment = 1
+upgrade_cost = 2500
+upgrade_cost_increase = 2500
+initial_max_value = 125
+
+[node name="Blood splats" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Blood splats"
+upgrade_increment = 1
+upgrade_cost = 2500
+upgrade_cost_increase = 2500
+initial_min_value = 0
+
+[node name="Splat size" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Splat size"
+upgrade_increment = 1
+upgrade_cost = 2500
+upgrade_cost_increase = 2500
+initial_min_value = 0
+
+[node name="New Run" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Start a New Run with these upgrades"
+
+[connection signal="pressed" from="Panel/VBoxContainer/New Run" to="." method="_on_new_run_pressed"]

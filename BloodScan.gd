@@ -20,7 +20,8 @@ func _ready():
 	self.z_index = -100
 
 func _on_player_died():
-	count_blood_pixels_low_res()
+	pass
+	#count_blood_pixels_low_res()
 
 func _draw():
 	var inner_color = Color8(35, 35, 35, 255)

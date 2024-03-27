@@ -14,13 +14,14 @@ signal player_died
 
 
 var active_powerup_colors = []
-var speed = 150
+var speed
+var bullet_speed
 var velocity = Vector2()
 var current_color = modulate
-var attackSpeed = 800.0  # 200 = Attack once every 2 seconds
+var attackSpeed
 var power_up_reset = []
-var damage = 1
-var default_damage = 1
+var damage
+var default_damage = PlayerSkills.bullet_damage
 var can_shoot = true
 var is_dead = false
 var bullet_wrap = 0
@@ -34,16 +35,22 @@ var invicible = false
 func _ready():
 	Global.player = self
 	self.global_position = get_viewport().size / 2
+	apply_skill_values()
 	$Reload_speed.wait_time = get_attack_delay()
 
+func apply_skill_values():
+	speed = PlayerSkills.movement_speed
+	attackSpeed = PlayerSkills.attack_speed #This is bad...
+	damage = PlayerSkills.bullet_damage
+	bullet_speed = PlayerSkills.bullet_speed
 
+	
 func _exit_tree():
 	Global.player = null
 
 func _process(delta):
 	velocity.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	velocity.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
-	
 	velocity = velocity.normalized()
 
 	var player_half_width = texture.get_width() / 2
@@ -62,11 +69,11 @@ func _process(delta):
 		bullet_instance.damage = damage
 		bullet_instance.bullet_wrap_decay = bullet_wrap_decay
 		bullet_instance.bullet_wrap = bullet_wrap
+		bullet_instance.speed = bullet_speed
 		bullet_instance.set_active_powerup_colors(active_powerup_colors.duplicate())
 		arena.add_child(bullet_instance)
 		$Reload_speed.start()
 		can_shoot = false
-
 
 func add_active_powerup_color(color):
 	active_powerup_colors.append(color)
@@ -76,9 +83,10 @@ func remove_active_powerup_color(color):
 	
 
 func get_attack_delay():
-	return 200.0 / attackSpeed  # Delay in seconds
+	return 100 / attackSpeed # Delay in seconds
 
 func modify_attackSpeed(multiplier):
+	print("Multiplier: ", multiplier)
 	attackSpeed *= multiplier
 	$Reload_speed.stop()
 	$Reload_speed.wait_time = get_attack_delay()
@@ -109,23 +117,3 @@ func _on_hitbox_area_entered(area):
 				visible = false
 				await(get_tree().create_timer(2.5).timeout)
 				emit_signal("player_died")
-
-
-
-#func _on_power_up_cooldown_timeout():
-#	if power_up_reset.find("Power_up_reload") != null:
-#		attackSpeed = default_attackSpeed
-#		power_up_reset.erase("Power_up_reload")
-#
-#	if power_up_reset.find("Power_up_damage") != null:
-#		damage = default_damage
-#
-#		power_up_reset.erase("Power_up_damage")
-#
-#	if power_up_reset.find("Power_up_wrap") != null:
-#		bullet_wrap = default_wrap
-#		power_up_reset.erase("Power_up_wrap")
-#
-#	bullet_color = default_bullet_color
-#	power_up_active = false
-

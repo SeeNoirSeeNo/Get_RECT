@@ -8,8 +8,8 @@ var color_change_interval = 0.15  # Change color every 0.5 seconds
 var color_ID = 0
 
 var velocity = Vector2(1,0)
-var speed = 250
-var original_speed = speed
+var speed
+var original_speed
 var damage = 0 #Changed in Player Script
 var look_once = true
 var is_stopped = false
@@ -25,6 +25,9 @@ var gravitational_pull_strength = randi_range(100,300)
 var slowing_enemies = []
 
 func _ready():
+	original_speed = speed
+	print("Speed: ", speed)
+	print("original_speed", original_speed)
 	var timer = Timer.new()
 	timer.wait_time = color_change_interval
 	timer.autostart = true

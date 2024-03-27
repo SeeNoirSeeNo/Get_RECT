@@ -283,6 +283,7 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 184.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndPanel/VBoxContainer"]
@@ -410,14 +411,13 @@ uppercase = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="EndPanel"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -33.0
-offset_bottom = 33.0
+anchor_bottom = 1.0
+offset_top = -144.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="NextStage" type="Button" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2
@@ -428,14 +428,39 @@ text = "Next Stage"
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "I am as useless as a fart in a space suit"
-text = "Useless button"
+text = "New Run"
 
 [node name="HSeparator" type="HSeparator" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2
+
+[node name="Shop" type="Button" parent="EndPanel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Shop"
 
 [node name="Quit" type="Button" parent="EndPanel/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
 
+[node name="Countdown" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="EndPanel/VBoxContainer2/NextStage" to="." method="_on_next_stage_pressed"]
+[connection signal="pressed" from="EndPanel/VBoxContainer2/Shop" to="." method="_on_shop_pressed"]

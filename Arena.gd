@@ -5,7 +5,10 @@ extends Node2D
 @onready var soundcontroller = $Sound_controller
 @onready var scoreboard = $Control/Scoreboard
 @onready var stage_timer = $stage_timer
+
 var stage_timer_duration = 10
+
+
 
 func _ready():
 	#Signals
@@ -33,12 +36,11 @@ func _on_next_stage_pressed():
 	stage_timer.start()
 	objectSpawner.start_spawning()
 
-
 func _on_arena_inside_area_entered(area):
-	if area.get_parent().is_in_group("enemies"):
+	if area.get_parent().is_in_group("Enemies"):
 		area.get_parent().add_to_group("in_arena")
 
 
 func _on_arena_inside_area_exited(area):
-	if area.get_parent().is_in_group("enemies"):
+	if area.get_parent().is_in_group("Enemies"):
 		area.get_parent().remove_from_group("in_arena")

@@ -81,7 +81,6 @@ func update_skills_info(enemy_attributes):
 	skills_info.text = "".join(rows)
 	
 func _on_mouse_entered(rep):
-	print("Enemy_Stats: PAUSED")
 	panel.show()
 	#var stage_index = Global.current_stage - 1
 	var index = rep.get_meta("index")  # Get the index from the metadata
@@ -114,8 +113,7 @@ func _on_mouse_entered(rep):
 	get_tree().paused = true
 
 
-func _on_mouse_exited(rep):
-	print("Enemy_Stats: UNPAUSED")
+func _on_mouse_exited(_rep):
 	panel.hide()
 	get_tree().paused = false
 

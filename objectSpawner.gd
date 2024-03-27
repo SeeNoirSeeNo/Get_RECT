@@ -53,9 +53,10 @@ func initilize_attributes(attributes, stage):
 	attributes.offset_max_time = randf() * 5 + 2 # Randomize the offset_max_time between 2 and 7
 	attributes.knockback = randi() % 10 + 1 # Randomize the knockback between 1 and 10
 	attributes.screen_shake = randi() % 5 + 1 # Randomize the screen_shake between 1 and 5
+
+	attributes.particle_amount = PlayerSkills.blood_splats
 	attributes.particle_scale_amount_min = 0.01
-	attributes.particle_scale_amount_max = 0.08
-	attributes.particle_amount = 4
+	attributes.particle_scale_amount_max = PlayerSkills.splat_size
 
 func _on_enemy_spawn_timer_timeout():
 	#If CHAOSMODE is on, randomize EACH enemy

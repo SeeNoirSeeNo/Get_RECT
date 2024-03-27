@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ora4"]
 size = Vector2(16, 16)
 
-[node name="Player" type="Sprite2D"]
+[node name="Player" type="Sprite2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_qrjd3")
 script = ExtResource("2_4rvfx")

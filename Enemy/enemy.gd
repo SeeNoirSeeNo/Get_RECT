@@ -50,7 +50,7 @@ var particle_amount : int = 0
 func _ready():
 	initialize_offset()
 	hp_label.text = str(hp)
-	add_to_group("enemies")
+	add_to_group("Enemies")
 	
 func _process(delta):
 	basic_movement_towards_player(delta)
@@ -113,7 +113,6 @@ func die():
 		blood_particles_instance.color = current_color
 		blood_particles_instance.scale_amount_min = particle_scale_amount_min  # Set the particle size
 		blood_particles_instance.scale_amount_max = particle_scale_amount_max # Set the particle size
-		print("MIN:", particle_scale_amount_min, "MAX:", particle_scale_amount_max)
 		blood_particles_instance.amount = particle_amount  # Set the particle amount
 		emit_signal("enemy_died", current_color)
 		var floating_points_instance = Global.instance_node(floating_points, global_position, Global.node_creation_parent.get_node("floating_points"))
@@ -124,7 +123,7 @@ func die():
 
 ### COLLISION ###
 func _on_hitbox_area_entered(area):
-	if area.is_in_group("Enemy_damager") and stun == false:
+	if area.is_in_group("Enemy_damager"): #and stun == false
 		modulate = Color.WHITE
 		velocity = (global_position - Global.player.global_position).normalized() * knockback  # Knockback direction is away from the player
 		Global.play_sound(impact_sound)
