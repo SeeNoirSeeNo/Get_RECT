@@ -1,7 +1,6 @@
 extends Control
 @onready var upgrade_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/UpgradeButton
 
-@onready var cost_int = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CostINT
 @onready var effect_label = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Effect_label
 
 @onready var skillname = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Skillname
@@ -40,9 +39,11 @@ func set_init_values():
 	skillname.text = name_of_the_skill #Init Skill Name
 	if name_of_the_skill in skill_descriptions:
 		text = skill_descriptions[name_of_the_skill]
-	update_upgrade_button_text()
+	
 	slider.min_value = initial_min_value # Init Min Value
 	slider.max_value = initial_max_value + (PlayerSkills.skill_level[name_of_the_skill] * upgrade_increment)# Init Max Value
+	upgrade_cost = (PlayerSkills.skill_level[name_of_the_skill] * upgrade_cost) + upgrade_cost
+	update_upgrade_button_text()
 	slider.value = slider.max_value
 
 func update_slider_info():
