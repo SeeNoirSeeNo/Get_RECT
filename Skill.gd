@@ -23,6 +23,7 @@ var skill_descriptions = {
 	"Bullet speed"		: "Increase your max bullet speed by 10",
 	"Attack speed"		: "Increase your max attack speed by 10",
 	"Movement speed" 	: "Increase your max movement speed by 5",
+	"Stun power"		: "Increase your stun power by 5",
 	"Splat size"		: "Increase the maximum size of blood splats enemy blood splatters",
 	"Blood splats"		: "Increase the amount of individual blood splats when an enemy dies",
 	"Powerup attackspeed": "Unlocks the 'Attackspeed' Powerup which will multiply your attackspeed by 3",
@@ -118,11 +119,15 @@ func set_values_in_global():
 		PlayerSkills.blood_splats = slider.value
 	if name_of_the_skill == "Splat size":
 		PlayerSkills.splat_size = slider.value / 100
+	if name_of_the_skill == "Stun power":
+		PlayerSkills.stunpower = slider.value
+		
 	if name_of_the_skill == "Powerup attackspeed":
 		PlayerSkills.powerup_attackspeed = slider.value
 	if name_of_the_skill == "Powerup damage":
 		PlayerSkills.powerup_damage = slider.value
 	if name_of_the_skill == "Powerup wrap":
 		PlayerSkills.powerup_wrap = slider.value
+
 
 

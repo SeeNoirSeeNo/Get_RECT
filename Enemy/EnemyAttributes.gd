@@ -13,6 +13,7 @@ var offset_range = 0
 var offset_min_time = 0.0
 var offset_max_time = 0.0
 #Meta
+var stun_resistance = 0
 var knockback = 0
 var screen_shake = 0
 #Sounds

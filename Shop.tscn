@@ -90,6 +90,17 @@ upgrade_cost_increase = 2500
 initial_max_value = 125
 max_level = 100
 
+[node name="Stun power" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Stun power"
+upgrade_increment = 5
+upgrade_cost = 2500
+upgrade_cost_increase = 2500
+initial_min_value = 0
+initial_max_value = 5
+max_level = 100
+
 [node name="Blood splats" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
 size_flags_vertical = 3

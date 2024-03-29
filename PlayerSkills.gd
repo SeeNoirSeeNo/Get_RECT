@@ -19,6 +19,7 @@ var default_damage = 0
 var powerup_damage = 0
 var powerup_attackspeed = 0
 var powerup_wrap = 0
+var stunpower = 0
 #Stats come from Skills.gd, ObjectSpawner.gd fetches them
 var	splat_size
 var blood_splats
@@ -31,6 +32,7 @@ var skill_level = {
 	"Movement speed" 		: 0,
 	"Blood splats"			: 0,
 	"Splat size" 			: 0,
+	"Stun power" 			: 0,
 	"Powerup attackspeed" 	: 0,
 	"Powerup damage" 		: 0,
 	"Powerup wrap"			: 0,

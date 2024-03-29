@@ -27,6 +27,7 @@ var hp : int = 1
 @onready var hp_label = $hp_label
 var bounty : int = 0
 #VARIOUS STATS
+var stun_resistance = 0
 var stun = false
 var knockback : int = 1
 var screen_shake : int = 1
@@ -100,6 +101,7 @@ func set_attributes(attributes: EnemyAttributes):
 	is_bullet_attractor = attributes.is_bullet_attractor
 	is_bullet_slower = attributes.is_bullet_slower
 	repelling_force = attributes.repelling_force
+	stun_resistance = attributes.stun_resistance
 
 ### DIE ###
 func die():
@@ -124,22 +126,32 @@ func die():
 ### COLLISION ###
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Enemy_damager"): #and stun == false
+		var bullet = area.get_parent()
 		modulate = Color.WHITE
 		velocity = (global_position - Global.player.global_position).normalized() * knockback  # Knockback direction is away from the player
 		Global.play_sound(impact_sound)
-		hp -= area.get_parent().damage
+		hp -= bullet.damage
 		hp_label.text = str(hp)
-		stun = true
-		$Stun_timer.start()
+
+		if stun_resistance < 100:
+			stun = true
+			var wait_time = bullet.stunpower * 0.01 * (1 - stun_resistance / 100.0)
+			$Stun_timer.wait_time = wait_time
+			print("Wait_Time: ", wait_time)
+			print("stun_resistance ", stun_resistance)
+			$Stun_timer.start()
+		else:
+			$Stun_timer.wait_time = 0.03
+			$Stun_timer.start()
 		var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)
-		_debris_instance.modulate = area.get_parent().modulate
-		_debris_instance.amount = randi_range(area.get_parent().debris_amount_min, area.get_parent().debris_amount_min)
+		_debris_instance.modulate = bullet.modulate
+		_debris_instance.amount = randi_range(bullet.debris_amount_min, bullet.debris_amount_max)
 		_debris_instance.spread = randf_range(85.0, 180)
 		if hp > 0:
-			_debris_instance.rotation = area.get_parent().velocity.angle() + PI
+			_debris_instance.rotation = bullet.velocity.angle() + PI
 		else:
-			_debris_instance.rotation = area.get_parent().velocity.angle()
-		area.get_parent().queue_free()
+			_debris_instance.rotation = bullet.velocity.angle()
+		bullet.queue_free()
 
 
 ### TIMERS ###

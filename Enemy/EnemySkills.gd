@@ -4,67 +4,86 @@ extends Node
 var available_skills = [
 
 ###///Cost, Min_Stage & Conflicts not implemented yet ///###
-	{"name" 		: 	"very_fast",
-	"cost" 			: 	0,
-	"min_stage"		:	3,
-	"conflicts" 	:	["fast", "slow", "very_slow"]
-	},
+#	{"name" 		: 	"very_fast",
+#	"cost" 			: 	0,
+#	"min_stage"		:	3,
+#	"conflicts" 	:	["fast", "slow", "very_slow"]
+#	},
+#
+#	{"name" 		: 	"fast",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	["very_fast", "slow", "very_slow"]
+#	},
+#
+#	{"name" 		: 	"very_slow",
+#	"cost" 			: 	0,
+#	"min_stage"		:	5,
+#	"conflicts" 	:	["very_fast", "fast", "slow"]
+#	},
+#
+#	{"name" 		: 	"slow",
+#	"cost" 			: 	0,
+#	"min_stage"		:	5,
+#	"conflicts" 	:	["very_fast", "fast", "very_slow"]
+#	},
+#
+#	{"name" 		: 	"sturdy",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
+#
+#	{"name" 		: 	"very_sturdy",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
+#
+#	{"name" 		: 	"shaker",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
+#
+#	{"name" 		: 	"bullet_stopper",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
+#
+#	{"name" 		: 	"bullet_attractor",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
+#
+#	{"name" 		: 	"bullet_slower",
+#	"cost" 			: 	0,
+#	"min_stage"		:	0,
+#	"conflicts" 	:	[]
+#	},
 
-	{"name" 		: 	"fast",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	["very_fast", "slow", "very_slow"]
-	},
-
-	{"name" 		: 	"very_slow",
-	"cost" 			: 	0,
-	"min_stage"		:	5,
-	"conflicts" 	:	["very_fast", "fast", "slow"]
-	},
-
-	{"name" 		: 	"slow",
-	"cost" 			: 	0,
-	"min_stage"		:	5,
-	"conflicts" 	:	["very_fast", "fast", "very_slow"]
-	},
-
-	{"name" 		: 	"sturdy",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	[]
-	},
-
-	{"name" 		: 	"very_sturdy",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	[]
-	},
-
-	{"name" 		: 	"shaker",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	[]
-	},
-
-	{"name" 		: 	"bullet_stopper",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	[]
-	},
-
-	{"name" 		: 	"bullet_attractor",
-	"cost" 			: 	0,
-	"min_stage"		:	0,
-	"conflicts" 	:	[]
-	},
-
-	{"name" 		: 	"bullet_slower",
+	{"name" 		: 	"stun_resistance",
 	"cost" 			: 	0,
 	"min_stage"		:	0,
 	"conflicts" 	:	[]
 	},
 ]
 
+func stun_resistance(attributes, stage):
+	var stun_resistance = randi_range(10, 33)
+	var bounty_bonus = stun_resistance + (stage * 17)
+	attributes.stun_resistance += stun_resistance
+	attributes.bounty += bounty_bonus
+	
+	
+	var data = {
+		"name" : "Stun resistance",
+		"Stun resistance" : stun_resistance,
+		"Bounty" : bounty_bonus,
+	}
+	add_skill_to_attributes(attributes, data)
 
 func fast(attributes, _stage):
 	var speed_bonus = randi_range(5, 20)
