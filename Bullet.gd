@@ -11,6 +11,7 @@ var velocity = Vector2(1,0)
 var speed
 var original_speed
 var damage = 0 #Changed in Player Script
+var stunpower = 0
 var look_once = true
 var is_stopped = false
 var bullet_wrap = 0
@@ -26,8 +27,6 @@ var slowing_enemies = []
 
 func _ready():
 	original_speed = speed
-	print("Speed: ", speed)
-	print("original_speed", original_speed)
 	var timer = Timer.new()
 	timer.wait_time = color_change_interval
 	timer.autostart = true

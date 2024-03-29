@@ -83,10 +83,10 @@ func stage_transition():
 	set_visibility(groups, false)
 	await get_tree().create_timer(0.1).timeout
 	await bloodScan.count_blood_pixels_low_res()
-	set_visibility(groups, true)
 	_on_score_updated()
 	updateHighscores()
 	await start_countdown()  # Add this line
+	set_visibility(groups, true)
 	go_to_next_stage()
 
 

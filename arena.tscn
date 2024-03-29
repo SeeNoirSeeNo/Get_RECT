@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_6eb4j")
 autostart = true
 
 [node name="Power_up_spawn_timer" type="Timer" parent="objectSpawner"]
-wait_time = 0.1
+wait_time = 4.0
 autostart = true
 
 [node name="stage_timer" type="Timer" parent="."]
@@ -84,7 +84,6 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_71iyh")
 
 [node name="enemy_stats" parent="." instance=ExtResource("8_ovyj2")]
-visible = false
 
 [node name="floating_points" type="Node" parent="."]
 

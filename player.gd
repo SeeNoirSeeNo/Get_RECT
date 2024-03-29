@@ -19,6 +19,7 @@ var bullet_speed
 var velocity = Vector2()
 var current_color = modulate
 var attackSpeed
+var stunpower = 0
 var power_up_reset = []
 var damage
 var default_damage = PlayerSkills.bullet_damage
@@ -43,13 +44,13 @@ func apply_skill_values():
 	attackSpeed = PlayerSkills.attack_speed #This is bad...
 	damage = PlayerSkills.bullet_damage
 	bullet_speed = PlayerSkills.bullet_speed
+	stunpower = PlayerSkills.stunpower
 
 	
 func _exit_tree():
 	Global.player = null
 
 func _process(delta):
-	print($Reload_speed.wait_time)
 	velocity.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	velocity.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	velocity = velocity.normalized()
@@ -71,6 +72,7 @@ func _process(delta):
 		bullet_instance.bullet_wrap_decay = bullet_wrap_decay
 		bullet_instance.bullet_wrap = bullet_wrap
 		bullet_instance.speed = bullet_speed
+		bullet_instance.stunpower = stunpower
 		bullet_instance.set_active_powerup_colors(active_powerup_colors.duplicate())
 		arena.add_child(bullet_instance)
 		$Reload_speed.start()
@@ -87,7 +89,6 @@ func get_attack_delay():
 	return 100 / attackSpeed # Delay in seconds
 
 func modify_attackSpeed(multiplier):
-	print("Multiplier: ", multiplier)
 	attackSpeed *= multiplier
 	$Reload_speed.stop()
 	$Reload_speed.wait_time = get_attack_delay()
