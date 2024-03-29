@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://iak4c7s0n4hw"]
+[gd_scene load_steps=7 format=3 uid="uid://iak4c7s0n4hw"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_ntvm1"]
+[ext_resource type="Theme" uid="uid://d3buykyq3ertw" path="res://Themes/Default.tres" id="2_n3b82"]
 [ext_resource type="PackedScene" uid="uid://b3meracix8wih" path="res://PowerUp_ShootingSpeed.tscn" id="7_exgfq"]
 [ext_resource type="PackedScene" uid="uid://v1f43hnd63ys" path="res://PowerUp_Wrap.tscn" id="8_y3imv"]
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="9_425w1"]
@@ -142,6 +143,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "All Pixels are primed
 Ready to play!"
+theme = ExtResource("2_n3b82")
 text = "Play"
 icon_alignment = 1
 
@@ -154,6 +156,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Discover how limited your power truly is"
+theme = ExtResource("2_n3b82")
 text = "Options
 "
 icon_alignment = 1
@@ -182,6 +185,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Quitting already?
 The pixels shed a tear, but they'll be here, waiting for your triumphant comeback"
+theme = ExtResource("2_n3b82")
 text = "Quit
 "
 icon_alignment = 1
@@ -220,6 +224,7 @@ Duration 5 Seconds
 Damage x10"
 
 [node name="powerUp_Damage" parent="MarginContainer/VBoxContainer/Powerup_container/Control" instance=ExtResource("10_sskve")]
+modulate = Color(0.678431, 0.180392, 0.141176, 0.0392157)
 
 [node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
 layout_mode = 2
@@ -235,6 +240,7 @@ Duration 5 Seconds
 Shooting Speed +200%"
 
 [node name="powerUp_ShootingSpeed" parent="MarginContainer/VBoxContainer/Powerup_container/Control2" instance=ExtResource("7_exgfq")]
+modulate = Color(0.941176, 0.984314, 0.105882, 0.0392157)
 
 [node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/Powerup_container"]
 layout_mode = 2
@@ -250,6 +256,7 @@ Duration 5 Seconds
 Bullet Accuracy +25%"
 
 [node name="powerUp_Wrap" parent="MarginContainer/VBoxContainer/Powerup_container/Control3" instance=ExtResource("8_y3imv")]
+modulate = Color(0, 0.447059, 0, 0.0392157)
 
 [node name="Sound_controller" parent="." instance=ExtResource("9_425w1")]
 

@@ -18,6 +18,7 @@ func _ready():
 	Global.node_creation_parent = self
 	Global.current_stage = 1
 	Global.play_music(track_name, -20)
+	
 
 	
 func _exit_tree():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ai7dlil5gr8"]
+[gd_scene load_steps=4 format=3 uid="uid://c8ai7dlil5gr8"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_tf7m6"]
 [ext_resource type="PackedScene" uid="uid://cruvada5eowm0" path="res://TestSkill.tscn" id="2_kbxip"]
+[ext_resource type="Theme" uid="uid://d3buykyq3ertw" path="res://Themes/Default.tres" id="3_ins1n"]
 
 [node name="TestShop" type="Control"]
 layout_mode = 3
@@ -58,6 +59,7 @@ upgrade_cost = 50000
 upgrade_cost_increase = 50000
 initial_min_value = 0
 initial_max_value = 1
+max_level = 100
 
 [node name="Bullet speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
@@ -66,6 +68,8 @@ name_of_the_skill = "Bullet speed"
 upgrade_increment = 5
 upgrade_cost = 500
 upgrade_cost_increase = 500
+initial_max_value = 175
+max_level = 100
 
 [node name="Attack speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
@@ -73,8 +77,9 @@ size_flags_vertical = 3
 name_of_the_skill = "Attack speed"
 upgrade_cost = 10000
 upgrade_cost_increase = 10000
-initial_min_value = 1
-initial_max_value = 120
+initial_min_value = 25
+initial_max_value = 175
+max_level = 100
 
 [node name="Movement speed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
@@ -83,6 +88,7 @@ upgrade_increment = 1
 upgrade_cost = 2500
 upgrade_cost_increase = 2500
 initial_max_value = 125
+max_level = 100
 
 [node name="Blood splats" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
@@ -93,6 +99,7 @@ upgrade_cost = 2500
 upgrade_cost_increase = 2500
 initial_min_value = 0
 initial_max_value = 1
+max_level = 100
 
 [node name="Splat size" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
 layout_mode = 2
@@ -103,9 +110,44 @@ upgrade_cost = 2500
 upgrade_cost_increase = 2500
 initial_min_value = 0
 initial_max_value = 1
+max_level = 100
+
+[node name="Powerup_Attackspeed" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Powerup attackspeed"
+upgrade_increment = 1
+upgrade_cost = 50000
+upgrade_cost_increase = 50000
+initial_min_value = 0
+initial_max_value = 0
+max_level = 1
+
+[node name="Powerup_Damage" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Powerup damage"
+upgrade_increment = 1
+upgrade_cost = 50000
+upgrade_cost_increase = 50000
+initial_min_value = 0
+initial_max_value = 0
+max_level = 1
+
+[node name="Powerup_Wrap" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Powerup wrap"
+upgrade_increment = 1
+upgrade_cost = 50000
+upgrade_cost_increase = 50000
+initial_min_value = 0
+initial_max_value = 0
+max_level = 1
 
 [node name="New Run" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_ins1n")
 text = "Start a New Run with these upgrades"
 
 [connection signal="pressed" from="Panel/VBoxContainer/New Run" to="." method="_on_new_run_pressed"]

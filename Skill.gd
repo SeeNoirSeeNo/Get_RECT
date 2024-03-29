@@ -16,6 +16,7 @@ extends Control
 @export var upgrade_cost_increase : int
 @export var initial_min_value : int
 @export var initial_max_value : int
+@export var max_level : int
 
 var skill_descriptions = {
 	"Bullet damage" 	: "Increase your max damage by 1",
@@ -23,7 +24,10 @@ var skill_descriptions = {
 	"Attack speed"		: "Increase your max attack speed by 10",
 	"Movement speed" 	: "Increase your max movement speed by 5",
 	"Splat size"		: "Increase the maximum size of blood splats enemy blood splatters",
-	"Blood splats"		: "Increase the amount of individual blood splats when an enemy dies"
+	"Blood splats"		: "Increase the amount of individual blood splats when an enemy dies",
+	"Powerup attackspeed": "Unlocks the 'Attackspeed' Powerup which will multiply your attackspeed by 3",
+	"Powerup damage"	: "Unlocks the 'Damage' Powerup which will multiply your damage by 10",
+	"Powerup wrap"		: "Unlocks the 'Wrap' Powerup which will make bullets wrap around the arena",
 }
 
 func _ready():
@@ -53,7 +57,7 @@ func update_slider_info():
 	max_value_int.self_modulate = Color("GREEN")
 
 func _on_upgrade_pressed():
-	if PlayerSkills.skillpoints >= upgrade_cost:
+	if PlayerSkills.skillpoints >= upgrade_cost and PlayerSkills.skill_level[name_of_the_skill] < max_level:
 		PlayerSkills.skillpoints -= upgrade_cost
 		slider.max_value += upgrade_increment
 		update_slider_info()
@@ -69,10 +73,13 @@ func update_skill_cost():
 	upgrade_cost += upgrade_cost_increase
 
 func update_upgrade_button_text():
-	upgrade_button.text = "Upgrade to Level: " + str(PlayerSkills.skill_level[name_of_the_skill] + 1) + " for " + str(upgrade_cost)
+	if PlayerSkills.skill_level[name_of_the_skill] < max_level:
+		upgrade_button.text = "Upgrade to Level: " + str(PlayerSkills.skill_level[name_of_the_skill] + 1) + " for " + str(upgrade_cost)
+	else:
+		upgrade_button.text = "MAX LEVEL REACHED"
 
 func adjust_upgrade_color():
-	if PlayerSkills.skillpoints >= upgrade_cost:
+	if PlayerSkills.skillpoints >= upgrade_cost and PlayerSkills.skill_level[name_of_the_skill] < max_level:
 		upgrade_button.add_theme_color_override("font_color", Color("CYAN"))
 		upgrade_button.add_theme_color_override("font_pressed_color", Color("CYAN"))
 		upgrade_button.add_theme_color_override("font_hover_color", Color("CYAN"))
@@ -111,5 +118,11 @@ func set_values_in_global():
 		PlayerSkills.blood_splats = slider.value
 	if name_of_the_skill == "Splat size":
 		PlayerSkills.splat_size = slider.value / 100
+	if name_of_the_skill == "Powerup attackspeed":
+		PlayerSkills.powerup_attackspeed = slider.value
+	if name_of_the_skill == "Powerup damage":
+		PlayerSkills.powerup_damage = slider.value
+	if name_of_the_skill == "Powerup wrap":
+		PlayerSkills.powerup_wrap = slider.value
 
 
