@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7p3wbac6idb4"]
+[gd_scene load_steps=11 format=3 uid="uid://c7p3wbac6idb4"]
 
 [ext_resource type="Script" path="res://Arena.gd" id="1_dwiex"]
 [ext_resource type="PackedScene" uid="uid://d1uqv8wssumwg" path="res://player.tscn" id="2_ax1f8"]
@@ -8,13 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dei3empqdqm4v" path="res://sound_controller.tscn" id="13_l134k"]
 [ext_resource type="Script" path="res://BloodScan.gd" id="16_oeknt"]
 [ext_resource type="PackedScene" uid="uid://cn3d7kv8lwa7l" path="res://scoreboard.tscn" id="17_e16v7"]
-
-[sub_resource type="Environment" id="Environment_seaom"]
-background_mode = 3
-glow_normalized = true
-glow_strength = 0.64
-glow_bloom = 0.15
-glow_blend_mode = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6eb4j"]
 size = Vector2(1280, 720)
@@ -28,9 +21,6 @@ script = ExtResource("1_dwiex")
 
 [node name="Player" parent="." instance=ExtResource("2_ax1f8")]
 position = Vector2(640, 360)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_seaom")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -78,7 +68,7 @@ shape = SubResource("RectangleShape2D_6eb4j")
 autostart = true
 
 [node name="Power_up_spawn_timer" type="Timer" parent="objectSpawner"]
-wait_time = 10.0
+wait_time = 0.1
 autostart = true
 
 [node name="stage_timer" type="Timer" parent="."]
@@ -86,6 +76,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="arena_inside" type="Area2D" parent="."]
+visible = false
 position = Vector2(640, 360)
 collision_mask = 2
 
@@ -93,6 +84,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_71iyh")
 
 [node name="enemy_stats" parent="." instance=ExtResource("8_ovyj2")]
+visible = false
 
 [node name="floating_points" type="Node" parent="."]
 

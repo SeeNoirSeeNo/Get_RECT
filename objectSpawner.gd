@@ -5,6 +5,7 @@ signal enemy_spawned(new_enemy)
 var EnemyAttributes = preload ("res://Enemy/EnemyAttributes.gd")
 var EnemyScene = preload ("res://Enemy/enemy.tscn")
 var power_ups = [ preload ("res://PowerUp_Damage.tscn"), preload ("res://PowerUp_ShootingSpeed.tscn"), preload ("res://PowerUp_Wrap.tscn")]
+var unlocked_power_ups = []
 #ONREADYS
 @onready var enemySpawnTimer = $Enemy_spawn_timer
 @onready var powerUpSpawnTimer = $Power_up_spawn_timer
@@ -14,7 +15,19 @@ var enemy_attributes_array = []
 func _ready():
 	#CONNECT SIGNALS
 	Global.stage_changed.connect(self._on_stage_changed)
+	update_unlocked_powerups()
 	
+	
+func update_unlocked_powerups():
+	unlocked_power_ups.clear()
+	if PlayerSkills.powerup_damage == 1:
+		unlocked_power_ups.append(power_ups[0])
+	if PlayerSkills.powerup_attackspeed == 1:
+		unlocked_power_ups.append(power_ups[1])
+	if PlayerSkills.powerup_wrap == 1:
+		unlocked_power_ups.append(power_ups[2])
+		
+		
 func _on_stage_changed(stage):
 	create_enemy_type(stage)
 
@@ -74,10 +87,13 @@ func _on_enemy_spawn_timer_timeout():
 	enemySpawnTimer.wait_time = new_wait_time
 
 func _on_power_up_spawn_timer_timeout():
-	Global.play_sound("powerup_spawn")
-	var power_up_number = round(randf_range(0, power_ups.size() - 1))
-	Global.instance_node(power_ups[power_up_number], Vector2(randf_range(170, 1100), randf_range(95, 620)), self)
-	
+	if unlocked_power_ups.size() > 0:
+		var power_up_number = round(randf_range(0, unlocked_power_ups.size() - 1))
+		Global.instance_node(unlocked_power_ups[power_up_number], Vector2(randf_range(170, 1100), randf_range(95, 620)), self)
+		Global.play_sound("powerup_spawn")
+		
+		
+		
 func find_enemy_spawn_position(enemy):
 	var enemy_position = Vector2()
 	var side = randi() % 4

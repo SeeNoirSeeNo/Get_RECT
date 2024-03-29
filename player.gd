@@ -49,6 +49,7 @@ func _exit_tree():
 	Global.player = null
 
 func _process(delta):
+	print($Reload_speed.wait_time)
 	velocity.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	velocity.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	velocity = velocity.normalized()

@@ -9,7 +9,7 @@ var arenaEdgeLeft = area_top_left.x
 var arenaEdgeRight = area_bottom_right.x
 var arenaEdgeTop = area_top_left.y
 var arenaEdgeBottom = area_bottom_right.y
-var default_color = Color8(35, 35, 35, 255)
+var default_color = Color8(5, 5, 5, 255)
 ###BLOOD###
 var blood_percentage : float
 var blood_count : int
@@ -24,7 +24,7 @@ func _on_player_died():
 	#count_blood_pixels_low_res()
 
 func _draw():
-	var inner_color = Color8(35, 35, 35, 255)
+	var inner_color = Color8(5, 5, 5, 255)
 	var border_color = Color8(255, 0, 0, 255)  # Red color
 	var border_width = 2  # Width of the border
 	# Draw the inner area
@@ -44,6 +44,6 @@ func count_blood_pixels_low_res():
 			if pixel_color != default_color:
 				blood_pixel_count += 1
 	blood_percentage = round((blood_pixel_count / total_pixels) * 100 * 100) / 100
-	blood_count = blood_pixel_count
+	blood_count = blood_pixel_count #Not needed if I adjust next line?!
 	Global.pixels = blood_count
 	Global.coverage = blood_percentage

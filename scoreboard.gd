@@ -78,7 +78,12 @@ func _on_enemy_died(enemy_color):
 
 # THE TRANSITION BETWEEN STAGES
 func stage_transition():
+	var groups = ["Enemies", "Powerups", "Bullets", "Player"]
+	#FINAL BLOOD SCAN
+	set_visibility(groups, false)
+	await get_tree().create_timer(0.1).timeout
 	await bloodScan.count_blood_pixels_low_res()
+	set_visibility(groups, true)
 	_on_score_updated()
 	updateHighscores()
 	await start_countdown()  # Add this line
@@ -142,7 +147,7 @@ func gameOver():
 func set_visibility(groups, visibility):
 	for group in groups:
 		for node in get_tree().get_nodes_in_group(group):
-			node.queue_free()
+			#node.queue_free()
 			node.visible = visibility
 
 
