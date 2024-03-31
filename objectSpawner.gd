@@ -4,7 +4,12 @@ signal enemy_spawned(new_enemy)
 #PRELOADS
 var EnemyAttributes = preload ("res://Enemy/EnemyAttributes.gd")
 var EnemyScene = preload ("res://Enemy/enemy.tscn")
-var power_ups = [ preload ("res://PowerUp_Damage.tscn"), preload ("res://PowerUp_ShootingSpeed.tscn"), preload ("res://PowerUp_Wrap.tscn")]
+var power_ups = [
+	preload ("res://PowerUp_Damage.tscn"),
+	preload ("res://PowerUp_ShootingSpeed.tscn"),
+	preload ("res://PowerUp_Wrap.tscn"),
+	preload("res://PowerUp_Bounty.tscn"),
+	]
 var unlocked_power_ups = []
 #ONREADYS
 @onready var enemySpawnTimer = $Enemy_spawn_timer
@@ -26,7 +31,8 @@ func update_unlocked_powerups():
 		unlocked_power_ups.append(power_ups[1])
 	if PlayerSkills.powerup_wrap == 1:
 		unlocked_power_ups.append(power_ups[2])
-		
+	if PlayerSkills.powerup_bounty == 1:
+		unlocked_power_ups.append(power_ups[3])
 		
 func _on_stage_changed(stage):
 	create_enemy_type(stage)
@@ -55,7 +61,7 @@ func pick_random_skills(attributes, stage):
 
 func initilize_attributes(attributes, stage):
 	attributes.hp = stage
-	attributes.bounty = 10 * stage
+	attributes.bounty = randi_range(8, 24) * stage
 	attributes.speed += 5 * stage
 	attributes.impact_sound = attributes.impact_sound.pick_random()
 	attributes.dying_sound = attributes.dying_sound.pick_random()

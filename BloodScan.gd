@@ -15,13 +15,7 @@ var blood_percentage : float
 var blood_count : int
 
 func _ready():
-	#Signals
-	player.player_died.connect(self._on_player_died)
 	self.z_index = -100
-
-func _on_player_died():
-	pass
-	#count_blood_pixels_low_res()
 
 func _draw():
 	var inner_color = Color8(5, 5, 5, 255)

@@ -19,6 +19,7 @@ var music_turned_off = false
 var difficulty_setting = 1
 var spawn_multiplicator = 1
 var chaosMode = false
+var scan_ongoing = false
 ###//GAME//###
 var _current_stage = 1
 var current_stage:

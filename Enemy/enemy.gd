@@ -45,6 +45,7 @@ var impact_sound = []
 var particle_scale_amount_min : float = 0
 var particle_scale_amount_max : float = 0
 var particle_amount : int = 0
+var bounty_multiplier = 1
 
 
 #METHODS
@@ -108,7 +109,7 @@ func die():
 	
 	if Global.camera != null:
 		Global.camera.screen_shake(screen_shake, 0.2)
-	Global.killBounty += bounty
+	Global.killBounty += bounty * bounty_multiplier
 	if Global.node_creation_parent != null:
 		var blood_particles_instance = Global.instance_node(blood_particles, global_position, Global.node_creation_parent.get_node("blood"))
 		blood_particles_instance.rotation = velocity.angle()
@@ -118,7 +119,7 @@ func die():
 		blood_particles_instance.amount = particle_amount  # Set the particle amount
 		emit_signal("enemy_died", current_color)
 		var floating_points_instance = Global.instance_node(floating_points, global_position, Global.node_creation_parent.get_node("floating_points"))
-		floating_points_instance.update_label(bounty, current_color)
+		floating_points_instance.update_label((bounty * bounty_multiplier), current_color)
 
 	Global.play_sound(death_sound)
 	queue_free()
@@ -132,13 +133,11 @@ func _on_hitbox_area_entered(area):
 		Global.play_sound(impact_sound)
 		hp -= bullet.damage
 		hp_label.text = str(hp)
-
+		bounty_multiplier = bullet.bounty_multiplier
 		if stun_resistance < 100:
 			stun = true
 			var wait_time = bullet.stunpower * 0.01 * (1 - stun_resistance / 100.0)
 			$Stun_timer.wait_time = wait_time
-			print("Wait_Time: ", wait_time)
-			print("stun_resistance ", stun_resistance)
 			$Stun_timer.start()
 		else:
 			$Stun_timer.wait_time = 0.03

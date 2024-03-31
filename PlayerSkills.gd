@@ -2,7 +2,7 @@ extends Node
 signal skillpoints_updated(skillpoints)
 
 
-var _skillpoints = 11111110
+var _skillpoints = 0
 var skillpoints:
 	get:
 		return _skillpoints
@@ -19,6 +19,7 @@ var default_damage = 0
 var powerup_damage = 0
 var powerup_attackspeed = 0
 var powerup_wrap = 0
+var powerup_bounty = 0
 var stunpower = 0
 #Stats come from Skills.gd, ObjectSpawner.gd fetches them
 var	splat_size
@@ -36,5 +37,6 @@ var skill_level = {
 	"Powerup attackspeed" 	: 0,
 	"Powerup damage" 		: 0,
 	"Powerup wrap"			: 0,
+	"Powerup bounty"		: 0,
 
 }

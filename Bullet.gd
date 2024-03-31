@@ -20,7 +20,7 @@ var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3", "shoot_4", "shoot_5", "sho
 var attracting_enemy = null
 var debris_amount_min = 1
 var debris_amount_max = 2
-
+var bounty_multiplier = 1
 var launch_velocity = Vector2()
 var gravitational_pull_strength = randi_range(100,300)
 var slowing_enemies = []
@@ -67,6 +67,7 @@ func _process(delta):
 			position.y = wrapf(position.y, bloodScan.arenaEdgeTop + Global.arena_offset_top, bloodScan.arenaEdgeBottom + Global.arena_offset_bottom)
 			if old_position != position:
 				bullet_wrap *= bullet_wrap_decay
+				damage += 1
 		else:
 			var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)
 			if active_powerup_colors.size() > 0:

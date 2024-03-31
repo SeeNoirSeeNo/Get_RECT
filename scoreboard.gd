@@ -38,6 +38,8 @@ var shop = preload("res://Shop.tscn")
 @onready var SB_CoverageSTR = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageSTR
 @onready var SB_CoverageINT = $EndPanel/VBoxContainer/HBoxContainer5/END_CoverageINT
 @onready var countdownLabel = $Countdown
+@onready var stage_timer_rich_label = $RightPanel/VBoxContainer/StageTimer_Rich_Label
+@onready var enemies_left_rich_label = $RightPanel/VBoxContainer/EnemiesLeft_Rich_Label
 
 
 
@@ -65,19 +67,29 @@ func reset_global_points():
 	Global.pixels = 0
 	Global.coverage = 0
 
-
+	
+func update_enemies_left_label():
+	var enemies_left = get_tree().get_nodes_in_group("Enemies").size() - 1 #NO IDEA why there is one "Enemy" too much all the time?!
+	var percentage = clamp(enemies_left / 25.0, 0, 1)
+	var color = Color.GREEN.lerp(Color.RED, percentage)
+	
+	enemies_left_rich_label.bbcode_text = "ENEMIES LEFT: [color=#" + color.to_html(false) + "]" + str(enemies_left) + "[/color]"
+	
 # CONNECTS "enemy_died" SIGNAL OF NEW SPAWNED ENEMIES
 func _on_enemy_spawned(enemy):
+	update_enemies_left_label()
 	enemy.enemy_died.connect(self._on_enemy_died)
 
 # CHECK FOR STAGE TRANSITION & CHANGE BOUNTY LABEL COLOR
 func _on_enemy_died(enemy_color):
+	update_enemies_left_label()
 	inGame_KillBountyINT.self_modulate = enemy_color
 	if get_tree().get_nodes_in_group("Enemies").size() == 1:
 		stage_transition()
 
 # THE TRANSITION BETWEEN STAGES
 func stage_transition():
+	Global.scan_ongoing = true
 	var groups = ["Enemies", "Powerups", "Bullets", "Player"]
 	#FINAL BLOOD SCAN
 	set_visibility(groups, false)
@@ -88,6 +100,7 @@ func stage_transition():
 	await start_countdown()  # Add this line
 	set_visibility(groups, true)
 	go_to_next_stage()
+	Global.scan_ongoing = false
 
 
 
@@ -142,6 +155,7 @@ func gameOver():
 	next_stageBTN.visible = false
 	start_counting_sequences()
 	PlayerSkills.skillpoints += Global.score
+	Global.scan_ongoing = false
 
 
 func set_visibility(groups, visibility):

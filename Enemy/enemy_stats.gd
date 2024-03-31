@@ -81,36 +81,37 @@ func update_skills_info(enemy_attributes):
 	skills_info.text = "".join(rows)
 	
 func _on_mouse_entered(rep):
-	panel.show()
-	#var stage_index = Global.current_stage - 1
-	var index = rep.get_meta("index")  # Get the index from the metadata
-	var enemy_attributes = object_spawner.enemy_attributes_array[index]
-	stage_int.text = "Stage " + str(index+1) + " Enemy"
+	if Global.scan_ongoing == false:
+		panel.show()
+		#var stage_index = Global.current_stage - 1
+		var index = rep.get_meta("index")  # Get the index from the metadata
+		var enemy_attributes = object_spawner.enemy_attributes_array[index]
+		stage_int.text = "Stage " + str(index+1) + " Enemy"
 
-	hp_int.text = str(enemy_attributes.hp)
-	hp_int.add_theme_color_override("font_color", Color("#d00000"))
-	
-	speed_int.text = str(enemy_attributes.speed)
-	speed_int.add_theme_color_override("font_color", Color("00FF00"))
-	
-	#behavior_int.text = str(enemy_attributes.hp)
-	#behavior_int.add_theme_color_override("font_color", Color("00FF00"))
-	
-	screenshake_int.text = str(enemy_attributes.screen_shake)
-	screenshake_int.add_theme_color_override("font_color", Color("E76F51"))
-	
-	knockback_int.text = str(enemy_attributes.knockback)
-	knockback_int.add_theme_color_override("font_color", Color("F694C1"))
-	
-	bounty_int.text = str(enemy_attributes.bounty)
-	bounty_int.add_theme_color_override("font_color", Color("FFFF00"))
-	
-	blood_amount_int.text = str(enemy_attributes.particle_amount)
-	blood_size_int.text = str((enemy_attributes.particle_scale_amount_min + enemy_attributes.particle_scale_amount_max) / 2)
+		hp_int.text = str(enemy_attributes.hp)
+		hp_int.add_theme_color_override("font_color", Color("#d00000"))
+		
+		speed_int.text = str(enemy_attributes.speed)
+		speed_int.add_theme_color_override("font_color", Color("00FF00"))
+		
+		#behavior_int.text = str(enemy_attributes.hp)
+		#behavior_int.add_theme_color_override("font_color", Color("00FF00"))
+		
+		screenshake_int.text = str(enemy_attributes.screen_shake)
+		screenshake_int.add_theme_color_override("font_color", Color("E76F51"))
+		
+		knockback_int.text = str(enemy_attributes.knockback)
+		knockback_int.add_theme_color_override("font_color", Color("F694C1"))
+		
+		bounty_int.text = str(enemy_attributes.bounty)
+		bounty_int.add_theme_color_override("font_color", Color("FFFF00"))
+		
+		blood_amount_int.text = str(enemy_attributes.particle_amount)
+		blood_size_int.text = str((enemy_attributes.particle_scale_amount_min + enemy_attributes.particle_scale_amount_max) / 2)
 
-	skills_info.text = ""
-	update_skills_info(enemy_attributes)
-	get_tree().paused = true
+		skills_info.text = ""
+		update_skills_info(enemy_attributes)
+		get_tree().paused = true
 
 
 func _on_mouse_exited(_rep):
