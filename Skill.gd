@@ -29,6 +29,7 @@ var skill_descriptions = {
 	"Powerup attackspeed": "Unlocks the 'Attackspeed' Powerup which will multiply your attackspeed by 3",
 	"Powerup damage"	: "Unlocks the 'Damage' Powerup which will multiply your damage by 10",
 	"Powerup wrap"		: "Unlocks the 'Wrap' Powerup which will make bullets wrap around the arena",
+	"Powerup bounty"	: "Unlocks the 'Bounty' Powerup which will multiply the enemy bounty by 2",
 }
 
 func _ready():
@@ -128,6 +129,8 @@ func set_values_in_global():
 		PlayerSkills.powerup_damage = slider.value
 	if name_of_the_skill == "Powerup wrap":
 		PlayerSkills.powerup_wrap = slider.value
+	if name_of_the_skill == "Powerup bounty":
+		PlayerSkills.powerup_bounty = slider.value
 
 
 

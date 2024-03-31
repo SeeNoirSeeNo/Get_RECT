@@ -1,12 +1,11 @@
 #PowerUp_Damage
 extends PowerUp
 
-
-var damage_multiplier = 10
+var bounty_multiplier = 2
 
 func _ready():
-	ID = "PowerUp_Damage"
-	color = Color8(173,46,36)
+	ID = "PowerUp_Bounty"
+	color = Color8(255,149,0)
 	self_modulate = color
 	add_to_group("Powerups")
 	
@@ -16,9 +15,9 @@ func activate():
 	player.add_active_powerup_color(color)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	player.modify_damage(damage_multiplier)
+	player.modify_bounty(bounty_multiplier)
 	await get_tree().create_timer(duration).timeout
 	print(ID, " Deactivated")
 	player.remove_active_powerup_color(color)
-	player.modify_damage(1.0 / damage_multiplier)
+	player.modify_bounty(-bounty_multiplier)
 	queue_free()

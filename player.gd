@@ -30,7 +30,8 @@ var bullet_wrap_decay = 0.5
 var bullet_color = Color(1, 1, 1, 1)
 var default_bullet_color = bullet_color
 var power_up_active = false
-var useable_powerup_wrap = false
+var bounty_multiplier = 1
+#var useable_powerup_wrap = false
 var invicible = false
 
 func _ready():
@@ -38,6 +39,7 @@ func _ready():
 	self.global_position = get_viewport().size / 2
 	apply_skill_values()
 	$Reload_speed.wait_time = get_attack_delay()
+	
 
 func apply_skill_values():
 	speed = PlayerSkills.movement_speed
@@ -73,6 +75,7 @@ func _process(delta):
 		bullet_instance.bullet_wrap = bullet_wrap
 		bullet_instance.speed = bullet_speed
 		bullet_instance.stunpower = stunpower
+		bullet_instance.bounty_multiplier = bounty_multiplier
 		bullet_instance.set_active_powerup_colors(active_powerup_colors.duplicate())
 		arena.add_child(bullet_instance)
 		$Reload_speed.start()
@@ -94,9 +97,14 @@ func modify_attackSpeed(multiplier):
 	$Reload_speed.wait_time = get_attack_delay()
 	$Reload_speed.start()
 
-func modify_damage(multiplier, color):
+func modify_damage(multiplier):
 	damage *= multiplier
-	bullet_color = color
+
+	
+func modify_bounty(multiplier):
+	bounty_multiplier += multiplier
+	print("multiplier ", multiplier)
+	print("bounty_multiplier ", bounty_multiplier)
 	
 func modify_wrap(modifier):
 	bullet_wrap += modifier

@@ -156,6 +156,17 @@ initial_min_value = 0
 initial_max_value = 0
 max_level = 1
 
+[node name="Powerup_Bounty" parent="Panel/VBoxContainer" instance=ExtResource("2_kbxip")]
+layout_mode = 2
+size_flags_vertical = 3
+name_of_the_skill = "Powerup bounty"
+upgrade_increment = 1
+upgrade_cost = 50000
+upgrade_cost_increase = 50000
+initial_min_value = 0
+initial_max_value = 0
+max_level = 1
+
 [node name="New Run" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ins1n")
