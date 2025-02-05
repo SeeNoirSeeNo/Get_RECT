@@ -1,18 +1,23 @@
 extends Node2D
 
 @onready var tracks = {
-	"Track0": $Track0,
-	"Track1": $Track1,
-	"Track2": $Track2,
-	"Track3": $Track3,
-	"Track4": $Track4,
-	"Track5": $Track5,
-	"Track6": $Track6,
-	"Track7": $Track7,
-	"Track8": $Track8,
-	"Track9": $Track9,
-	"Track10": $Track10
+	"Qualle: WaveShooter": $Music/Track0,
+	"DavidKBD: The desolation of a civilization": $Music/Track1,
+	"DavidKBD: Agony Space-deep": $Music/Track2,
+	"DavidKBD: I Can See You:": $Music/Track3,
+	"DavidKBD: Eating offal": $Music/Track4,
+	"DavidKBD: Evil soul inside": $Music/Track5,
+	"DavidKBD: God of darkness": $Music/Track6,
+	"DavidKBD: Suffocation": $Music/Track7,
+	"DavidKBD: While We Sleep": $Music/Track8,
+	"DavidKBD: Soul evisceration": $Music/Track9,
+	"DavidKBD: Rotten Offal": $Music/Track10,
+	"DavidKBD: Screams in the Distance": $Music/Track11,
+	"DavidKBD: At the Gates": $Music/Track12,
 }
+
+
+
 
 var current_track = null
 

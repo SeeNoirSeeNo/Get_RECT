@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dei3empqdqm4v"]
+[gd_scene load_steps=36 format=3 uid="uid://dei3empqdqm4v"]
 
 [ext_resource type="Script" path="res://sound_controller.gd" id="1_2cawy"]
 [ext_resource type="AudioStream" uid="uid://d218w6n23cvsp" path="res://Sounds/dying_1.wav" id="3_aihwy"]
@@ -16,19 +16,22 @@
 [ext_resource type="AudioStream" uid="uid://cbb44nqfv8vv" path="res://Sounds/Bullets/Shoot_6.wav" id="11_vdm51"]
 [ext_resource type="AudioStream" uid="uid://cnxq37yxesiqe" path="res://Sounds/Bullets/Shoot_7.wav" id="12_eqjtp"]
 [ext_resource type="AudioStream" uid="uid://bkusxjng7ln1i" path="res://Sounds/Powerups/powerUp_1.wav" id="12_opsth"]
-[ext_resource type="AudioStream" uid="uid://hf574710dewk" path="res://Sounds/WaveShooter.mp3" id="13_k040n"]
 [ext_resource type="AudioStream" uid="uid://ntrple3tlir7" path="res://Sounds/Player/PlayerDied.wav" id="14_58yfi"]
-[ext_resource type="AudioStream" uid="uid://brnl5d7ull15b" path="res://Sounds/Music/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - loop.ogg" id="15_kdfvt"]
 [ext_resource type="AudioStream" uid="uid://c672pd782myd0" path="res://Sounds/Music/DavidKBD - Eternity Pack - 01 - The desolation of a civilization - oneshoot.ogg" id="16_g0wcy"]
-[ext_resource type="AudioStream" uid="uid://cqwuprpgl4dit" path="res://Sounds/Music/DavidKBD - Eternity Pack - 02 - Agony Space-deep - loop.ogg" id="17_ujgtl"]
+[ext_resource type="AudioStream" uid="uid://cwsluvlcmlmt3" path="res://Sounds/Bullets/WallHit6.wav" id="18_avvcn"]
+[ext_resource type="AudioStream" uid="uid://hf574710dewk" path="res://Sounds/Music/WaveShooter.mp3" id="18_ejj7o"]
 [ext_resource type="AudioStream" uid="uid://bosm544lo21u2" path="res://Sounds/Music/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg" id="18_vt2y7"]
-[ext_resource type="AudioStream" uid="uid://d1vdx60h153iq" path="res://Sounds/Music/DavidKBD - Eternity Pack - 03 - I Can See You - loop.ogg" id="19_2uf38"]
 [ext_resource type="AudioStream" uid="uid://dyf1kjn0rb05h" path="res://Sounds/Music/DavidKBD - Eternity Pack - 03 - I Can See You - oneshoot.ogg" id="20_blwtd"]
-[ext_resource type="AudioStream" uid="uid://ckeanegxtf41a" path="res://Sounds/Music/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="23_mfdv0"]
+[ext_resource type="AudioStream" uid="uid://ca8oh4mypgibp" path="res://Sounds/Music/DavidKBD - Eternity Pack - 04 - Eating offal - oneshoot.ogg" id="22_ti1ik"]
 [ext_resource type="AudioStream" uid="uid://b343pwyymjlp" path="res://Sounds/Music/DavidKBD - Eternity Pack - 05 - Evil soul inside - oneshoot.ogg" id="24_66ld4"]
-[ext_resource type="AudioStream" uid="uid://2qre08p1ei2o" path="res://Sounds/Music/DavidKBD - Eternity Pack - 08 - While We Sleep - loop.ogg" id="25_8mux7"]
-[ext_resource type="AudioStream" uid="uid://vrxram71473w" path="res://Sounds/Music/DavidKBD - Eternity Pack - 07 - Suffocation - loop.ogg" id="25_yf38y"]
+[ext_resource type="AudioStream" uid="uid://dwpopn4dv4aht" path="res://Sounds/Music/DavidKBD - Eternity Pack - 06 - God of darkness - oneshoot.ogg" id="24_s1m63"]
+[ext_resource type="AudioStream" uid="uid://bckedw8n31a7s" path="res://Sounds/Music/DavidKBD - Eternity Pack - 07 - Suffocation - oneshoot.ogg" id="25_y7r8n"]
 [ext_resource type="AudioStream" uid="uid://ol5rx6drbv7k" path="res://Sounds/scoure_count.wav" id="26_oy4o7"]
+[ext_resource type="AudioStream" uid="uid://bs5wvb4rio82i" path="res://Sounds/Music/DavidKBD - Eternity Pack - 08 - While We Sleep - oneshoot.ogg" id="26_p57rm"]
+[ext_resource type="AudioStream" uid="uid://bu3qdwcvlyxdt" path="res://Sounds/Music/DavidKBD - Eternity Pack - 09 - Soul evisceration - oneshoot.ogg" id="27_t8pha"]
+[ext_resource type="AudioStream" uid="uid://bv2gacplqfwuk" path="res://Sounds/Music/DavidKBD - Eternity Pack - 10 - Rotten Offal - oneshoot.ogg" id="28_1autc"]
+[ext_resource type="AudioStream" uid="uid://8udyh8keoknq" path="res://Sounds/Music/DavidKBD - Eternity Pack - 11 - Screams in the Distance - oneshoot.ogg" id="29_76h3g"]
+[ext_resource type="AudioStream" uid="uid://pvcas45xbdgu" path="res://Sounds/Music/DavidKBD - Eternity Pack - 12 - At the Gates - oneshoot.ogg" id="30_demjy"]
 [ext_resource type="AudioStream" uid="uid://beu0e0fe1r87o" path="res://Sounds/Shop/skill_bought.wav" id="30_iy4xe"]
 [ext_resource type="AudioStream" uid="uid://ddqrauc88mfm0" path="res://Sounds/Shop/pickupCoin.wav" id="31_iy74a"]
 [ext_resource type="AudioStream" uid="uid://x7i8q413u6kh" path="res://Sounds/Shop/stagestart.wav" id="32_3wsl3"]
@@ -92,46 +95,16 @@ volume_db = -15.0
 stream = ExtResource("11_ta5ul")
 volume_db = -15.0
 
+[node name="wall_hit_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_avvcn")
+volume_db = -20.0
+
 [node name="powerUpPickup_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_opsth")
 volume_db = -10.467
 
 [node name="player_died" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_58yfi")
-
-[node name="Track0" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_k040n")
-volume_db = -20.0
-
-[node name="Track1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_kdfvt")
-
-[node name="Track2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_g0wcy")
-
-[node name="Track3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_ujgtl")
-
-[node name="Track4" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_vt2y7")
-
-[node name="Track5" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_2uf38")
-
-[node name="Track6" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_blwtd")
-
-[node name="Track7" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_yf38y")
-
-[node name="Track8" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_8mux7")
-
-[node name="Track9" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_mfdv0")
-
-[node name="Track10" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_66ld4")
 
 [node name="coutingUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_oy4o7")
@@ -146,3 +119,57 @@ volume_db = -8.0
 [node name="stagestart" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_3wsl3")
 volume_db = -8.0
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Track0" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("18_ejj7o")
+volume_db = -20.0
+
+[node name="Track1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_g0wcy")
+volume_db = -20.0
+
+[node name="Track2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("18_vt2y7")
+volume_db = -20.0
+
+[node name="Track3" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("20_blwtd")
+volume_db = -20.0
+
+[node name="Track4" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("22_ti1ik")
+volume_db = -20.0
+
+[node name="Track5" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("24_66ld4")
+volume_db = -20.0
+
+[node name="Track6" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("24_s1m63")
+volume_db = -20.0
+
+[node name="Track7" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("25_y7r8n")
+volume_db = -20.0
+
+[node name="Track8" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("26_p57rm")
+volume_db = -20.0
+
+[node name="Track9" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("27_t8pha")
+volume_db = -20.0
+
+[node name="Track10" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("28_1autc")
+volume_db = -20.0
+
+[node name="Track11" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("29_76h3g")
+volume_db = -20.0
+
+[node name="Track12" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("30_demjy")
+volume_db = -20.0

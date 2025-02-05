@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://d17sjsvletpgb"]
+
+[ext_resource type="Texture2D" uid="uid://kvjepqwb7dvr" path="res://icon.svg" id="1_8knho"]
+[ext_resource type="Script" path="res://GodotGesicht.gd" id="2_x7ewj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrd7h"]
+size = Vector2(115, 118.5)
+
+[node name="GodotGesicht" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(182, 52)
+texture = ExtResource("1_8knho")
+script = ExtResource("2_x7ewj")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(-5, 3)
+shape = SubResource("RectangleShape2D_yrd7h")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(100, -94)
+texture = ExtResource("1_8knho")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 5
+lifetime = 2.15
+preprocess = 0.8
+texture = ExtResource("1_8knho")
+emission_shape = 1
+emission_sphere_radius = 23.19
+gravity = Vector2(480, 980)
+angular_velocity_min = 266.36
+angular_velocity_max = 266.36

@@ -57,8 +57,8 @@ func _process(delta):
 	velocity.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	velocity = velocity.normalized()
 
-	var player_half_width = texture.get_width() / 2
-	var player_half_height = texture.get_height() / 2
+	var player_half_width = texture.get_width() / 2.0
+	var player_half_height = texture.get_height() / 2.0
 	
 
 	global_position.x = clamp(global_position.x, (bloodScan.arenaEdgeLeft + Global.arena_offset_left) + player_half_width, (bloodScan.arenaEdgeRight + Global.arena_offset_right) - player_half_width)

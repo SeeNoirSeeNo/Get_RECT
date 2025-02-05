@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://puqrcdollid6"]
+
+[node name="Line2D" type="Line2D"]
+points = PackedVector2Array(345, 325, 915, 324)
