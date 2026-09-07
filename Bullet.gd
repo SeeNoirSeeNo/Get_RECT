@@ -12,7 +12,7 @@ var speed
 var original_speed
 var damage = 0 #Changed in Player Script
 var stunpower = 0
-var look_once = true
+#var look_once = true
 var is_stopped = false
 var bullet_wrap = 0
 var bullet_wrap_decay = 0
