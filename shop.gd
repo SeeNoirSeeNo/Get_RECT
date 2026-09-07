@@ -5,7 +5,7 @@ signal shop_values_updated
 @onready var skillpoints_int = $Panel/VBoxContainer/PanelContainer/HBoxContainer/skillpoints_INT
 
 
-func _process(delta):
+func _process(_delta):
 	skillpoints_int.text = str(PlayerSkills.skillpoints)
 
 

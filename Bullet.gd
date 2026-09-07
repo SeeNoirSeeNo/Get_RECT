@@ -12,11 +12,12 @@ var speed
 var original_speed
 var damage = 0 #Changed in Player Script
 var stunpower = 0
-var look_once = true
+#var look_once = true
 var is_stopped = false
 var bullet_wrap = 0
 var bullet_wrap_decay = 0
 var bullet_sounds = ["shoot_1", "shoot_2", "shoot_3", "shoot_4", "shoot_5", "shoot_6"]
+var wall_hit_sounds = ["wall_hit_1"]
 var attracting_enemy = null
 var debris_amount_min = 1
 var debris_amount_max = 2
@@ -69,6 +70,7 @@ func _process(delta):
 				bullet_wrap *= bullet_wrap_decay
 				damage += 1
 		else:
+			Global.play_sound(wall_hit_sounds.pick_random(), 0.0, randf_range(0.5, 1.5))
 			var _debris_instance = Global.instance_node(debris, global_position, Global.node_creation_parent)
 			if active_powerup_colors.size() > 0:
 				_debris_instance.modulate = active_powerup_colors[color_ID]
@@ -113,4 +115,3 @@ func update_speed():
 	speed = original_speed
 	for e in slowing_enemies:
 		speed *= e[1]  # Apply the slow force of each enemy
-

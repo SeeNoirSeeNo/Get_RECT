@@ -72,9 +72,9 @@ var available_skills = [
 ]
 
 func stun_resistance(attributes, stage):
-	var stun_resistance = randi_range(10, 33)
-	var bounty_bonus = stun_resistance + (stage * 17)
-	attributes.stun_resistance += stun_resistance
+	var stun_resis = randi_range(10, 33)
+	var bounty_bonus = stun_resis + (stage * 17)
+	attributes.stun_resistance += stun_resis
 	attributes.bounty += bounty_bonus
 	
 	

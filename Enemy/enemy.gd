@@ -160,8 +160,8 @@ func _on_stun_timer_timeout():
 
 func _on_offset_timer_timeout():
 	if Global.player != null and use_offset:
-		var offset = Vector2(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))  # Generate a random offset if use_offset is true
-		target_position = Global.player.global_position + offset  # Update the target position
+		var pos_offset = Vector2(randf_range(-offset_range, offset_range), randf_range(-offset_range, offset_range))  # Generate a random offset if use_offset is true
+		target_position = Global.player.global_position + pos_offset  # Update the target position
 	if use_offset:
 		offset_timer.start(randf_range(offset_min_time, offset_max_time))  # Restart the timer with a new random time
 

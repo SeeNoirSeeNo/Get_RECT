@@ -2,7 +2,7 @@ extends Node
 signal skillpoints_updated(skillpoints)
 
 
-var _skillpoints = 0
+var _skillpoints = 500000000
 var skillpoints:
 	get:
 		return _skillpoints

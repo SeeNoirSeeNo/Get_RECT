@@ -7,17 +7,17 @@ extends Node2D
 @onready var stage_timer = $stage_timer
 
 var stage_timer_duration = 10
-
+var is_normal_speed = true
 
 
 func _ready():
 	#Signals
 	scoreboard.enter_next_stage.connect(self._on_next_stage_pressed)
-	var track_names = soundcontroller.tracks.keys()
-	var track_name = track_names.pick_random()
+	#Setup
 	Global.node_creation_parent = self
 	Global.current_stage = 1
-	Global.play_music(track_name, -20)
+	#Music
+	scoreboard._on_next_pressed()
 	
 
 	
@@ -45,3 +45,12 @@ func _on_arena_inside_area_entered(area):
 func _on_arena_inside_area_exited(area):
 	if area.get_parent().is_in_group("Enemies"):
 		area.get_parent().remove_from_group("in_arena")
+
+
+
+func _on_game_speed_toggle_pressed():
+	if is_normal_speed:
+		Engine.time_scale = 2.0  # Run the game at 2x speed
+	else:
+		Engine.time_scale = 1.0  # Run the game at normal speed
+	is_normal_speed = !is_normal_speed

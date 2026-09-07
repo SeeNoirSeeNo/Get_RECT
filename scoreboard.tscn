@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_fntat")
 
 [node name="TopPanel" type="Panel" parent="."]
@@ -245,6 +246,35 @@ size_flags_horizontal = 3
 text = "57%"
 vertical_alignment = 1
 
+[node name="TopHBoxContainer2" type="HBoxContainer" parent="BottomPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Currently_playing" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+text = "Currently playing:"
+
+[node name="song_name" type="Label" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+text = "\"SONG NAME\""
+
+[node name="VSeparator" type="VSeparator" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+
+[node name="Previous" type="Button" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+text = "Previous"
+
+[node name="VSeparator2" type="VSeparator" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+
+[node name="Next" type="Button" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+text = "Next"
+
+[node name="VSeparator3" type="VSeparator" parent="BottomPanel/VBoxContainer/TopHBoxContainer2"]
+layout_mode = 2
+
 [node name="LeftPanel" type="Panel" parent="."]
 self_modulate = Color(0.0352941, 0.254902, 1, 1)
 custom_minimum_size = Vector2(160, 0)
@@ -252,6 +282,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RightPanel" type="Panel" parent="."]
 self_modulate = Color(0.0352941, 0.254902, 1, 1)
@@ -482,5 +513,7 @@ theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="BottomPanel/VBoxContainer/TopHBoxContainer2/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="BottomPanel/VBoxContainer/TopHBoxContainer2/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="EndPanel/VBoxContainer2/NextStage" to="." method="_on_next_stage_pressed"]
 [connection signal="pressed" from="EndPanel/VBoxContainer2/Shop" to="." method="_on_shop_pressed"]

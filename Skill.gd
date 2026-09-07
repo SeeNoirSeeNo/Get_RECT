@@ -37,7 +37,7 @@ func _ready():
 	update_slider_info()
 
 
-func _process(delta):
+func _process(_delta):
 	effect_label.text = text
 	adjust_upgrade_color()
 
@@ -131,6 +131,3 @@ func set_values_in_global():
 		PlayerSkills.powerup_wrap = slider.value
 	if name_of_the_skill == "Powerup bounty":
 		PlayerSkills.powerup_bounty = slider.value
-
-
-

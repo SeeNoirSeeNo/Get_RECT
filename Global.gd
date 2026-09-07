@@ -74,12 +74,12 @@ func instance_node(node,location,parent):
 	node_instance.global_position = location
 	return node_instance
 
-func play_sound(sound, volume = 0.0, pitch = 0.0):
+func play_sound(sound, _volume = 0.0, pitch = 1.0):
 	if sound_controller != null and music_turned_off == false:
 		if sound_controller.has_node(sound):
 			#WE NEVER SET IT BACK TO ORIGINAL VOLUME, SO IT WILL BE QUITE!!!
 			#sound_controller.get_node(sound).volume_db += volume
-			sound_controller.get_node(sound).pitch_scale += pitch
+			sound_controller.get_node(sound).pitch_scale = pitch
 			sound_controller.get_node(sound).play()
 
 
@@ -88,12 +88,12 @@ func stop_sound(sound):
 		if sound_controller.has_node(sound):
 			sound_controller.get_node(sound).stop()
 
-func play_music(name, volume = 0.0):
+func play_music(track_name, volume = 0.0):
 	if sound_controller != null and music_turned_off == false:
-		if name in sound_controller.tracks:
+		if track_name in sound_controller.tracks:
 			if sound_controller.current_track:
 				sound_controller.current_track.stop()
-			sound_controller.current_track = sound_controller.tracks[name]
+			sound_controller.current_track = sound_controller.tracks[track_name]
 			sound_controller.current_track.volume_db += volume
 			sound_controller.current_track.play()
 

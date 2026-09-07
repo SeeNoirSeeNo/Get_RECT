@@ -20,6 +20,7 @@ extends Control
 
 
 func _ready():
+	print("hello")
 	var index = 0
 	for rep in representations.get_children():
 		var area = rep.get_node("Area2D")
@@ -67,9 +68,9 @@ func update_skills_info(enemy_attributes):
 	
 	var rows = []
 	for skill in enemy_attributes.skill_data:
-		var name = skill["name"]
-		var color = color_map.get(name, "white")  # Get the color for the name, or default to white
-		var colored_name = "[color=" + color + "]" + name + "[/color]"
+		var skillname = skill["name"]
+		var color = color_map.get(skillname, "white")  # Get the color for the name, or default to white
+		var colored_name = "[color=" + color + "]" + skillname + "[/color]"
 		var attributes = ""
 		for key in skill.keys():
 			if key != "name":
@@ -117,4 +118,3 @@ func _on_mouse_entered(rep):
 func _on_mouse_exited(_rep):
 	panel.hide()
 	get_tree().paused = false
-
